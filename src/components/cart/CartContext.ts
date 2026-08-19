@@ -9,6 +9,7 @@ export type CartCustomization = {
   date?: string
   notes?: string
   dedication?: string
+  musicLink?: string
   uploadedFiles?: Array<{ name: string }>
 }
 

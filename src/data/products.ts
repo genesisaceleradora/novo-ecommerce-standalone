@@ -19,7 +19,7 @@ export const products: Product[] = [
     ],
     personalization: {
       enabled: true,
-      fields: { name: true, phrase: true, notes: true, imageUpload: true },
+      fields: { name: true, phrase: true, date: true, notes: true, imageUpload: true, multipleImageUpload: true, musicLink: true },
       requiredFields: ['name'],
       instructions: 'Envie os dados de personalização para simular o fluxo.',
     },

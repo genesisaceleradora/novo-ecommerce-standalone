@@ -4,7 +4,7 @@ import { FAQ } from '@/components/marketing/FAQ'
 import { ProductCard } from '@/components/product/ProductCard'
 import { ProductGallery } from '@/components/product/ProductGallery'
 import { Badge } from '@/components/ui/Badge'
-import { AddToCartButton } from '@/components/product/AddToCartButton'
+import { ProductPersonalization } from '@/components/product/ProductPersonalization'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { getRelatedProducts, getProductBySlug, products } from '@/data/products'
@@ -42,7 +42,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <p className="mt-1 text-sm text-muted">Em até {product.installmentMax}x de {installmentValue} sem juros <span className="text-xs">(valores demonstrativos)</span></p>
             {product.pixDiscountPercent && <p className="mt-2 text-sm font-semibold text-gold-dark">{product.pixDiscountPercent}% de desconto no Pix (placeholder)</p>}
           </div>
-          <AddToCartButton product={product} />
+          <ProductPersonalization product={product} />
           <p className="mt-3 text-center text-xs text-muted">Carrinho persistente no navegador. Checkout será implementado em uma próxima etapa.</p>
           <dl className="mt-8 space-y-4 border-t border-line pt-6 text-sm">
             <div><dt className="font-semibold text-navy">Produção</dt><dd className="mt-1 text-muted">{product.productionTime}</dd></div>

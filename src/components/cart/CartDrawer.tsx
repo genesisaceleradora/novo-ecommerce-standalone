@@ -15,6 +15,7 @@ function CustomizationSummary({ item }: { item: ReturnType<typeof useCart>['item
     customization.date && `Data: ${customization.date}`,
     customization.dedication && `Dedicatória: ${customization.dedication}`,
     customization.notes && `Observações: ${customization.notes}`,
+    customization.musicLink && `Música: ${customization.musicLink}`,
     customization.uploadedFiles?.length && `${customization.uploadedFiles.length} arquivo(s) enviado(s)`,
   ].filter(Boolean)
   if (details.length === 0) return null

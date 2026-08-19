@@ -2,7 +2,7 @@ import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
 
 const navigation = [
-  { href: '#colecoes', label: 'Coleções' },
+  { href: '/categoria/personalizados', label: 'Coleções' },
   { href: '#destaques', label: 'Destaques' },
   { href: '#como-funciona', label: 'Como funciona' },
 ]

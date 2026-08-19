@@ -6,7 +6,8 @@ import { ProductCard } from '@/components/product/ProductCard'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { benefits, faqs, provisionalCategories, provisionalProducts } from '@/data/home'
+import { benefits, faqs, provisionalCategories } from '@/data/home'
+import { products } from '@/data/products'
 
 export default function HomePage() {
   return (
@@ -30,7 +31,7 @@ export default function HomePage() {
         <Container>
           <SectionTitle description="Cards reutilizáveis preparados para preço, imagem, badge e CTA quando o catálogo final existir." eyebrow="Seleção provisória" title="Destaques para emocionar." />
           <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {provisionalProducts.map((product) => <ProductCard key={product.name} {...product} />)}
+            {products.map((product) => <ProductCard badge={product.badge} description={product.shortDescription} href={`/produto/${product.slug}`} key={product.id} name={product.name} price={product.price} />)}
           </div>
         </Container>
       </section>

@@ -1,0 +1,68 @@
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { FAQ } from '@/components/marketing/FAQ'
+import { ProductCard } from '@/components/product/ProductCard'
+import { ProductGallery } from '@/components/product/ProductGallery'
+import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
+import { Container } from '@/components/ui/Container'
+import { SectionTitle } from '@/components/ui/SectionTitle'
+import { getRelatedProducts, getProductBySlug, products } from '@/data/products'
+import { formatPriceInBRL } from '@/lib/formatters'
+
+type ProductPageProps = { params: Promise<{ slug: string }> }
+
+export function generateStaticParams() {
+  return products.filter((product) => product.active).map(({ slug }) => ({ slug }))
+}
+
+export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
+  const product = getProductBySlug((await params).slug)
+  if (!product) return {}
+  return { title: product.seoTitle, description: product.seoDescription }
+}
+
+export default async function ProductPage({ params }: ProductPageProps) {
+  const product = getProductBySlug((await params).slug)
+  if (!product) notFound()
+  const relatedProducts = getRelatedProducts(product)
+  const installmentValue = formatPriceInBRL(Math.round(product.price / product.installmentMax))
+
+  return (
+    <Container className="py-10 md:py-16">
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">Catálogo demonstrativo / {product.categorySlug}</p>
+      <div className="mt-5 grid gap-10 lg:grid-cols-2 lg:gap-14">
+        <ProductGallery images={product.images} productName={product.name} />
+        <div className="lg:pt-4">
+          {product.badge && <Badge>{product.badge}</Badge>}
+          <h1 className="mt-4 font-display text-4xl font-semibold leading-tight text-navy sm:text-5xl">{product.name}</h1>
+          <p className="mt-4 text-base leading-7 text-muted">{product.shortDescription}</p>
+          <div className="mt-7 border-y border-line py-5">
+            <p className="font-display text-3xl font-semibold text-navy">{formatPriceInBRL(product.price)}</p>
+            <p className="mt-1 text-sm text-muted">Em até {product.installmentMax}x de {installmentValue} sem juros <span className="text-xs">(valores demonstrativos)</span></p>
+            {product.pixDiscountPercent && <p className="mt-2 text-sm font-semibold text-gold-dark">{product.pixDiscountPercent}% de desconto no Pix (placeholder)</p>}
+          </div>
+          <Button className="mt-7 w-full" aria-label={`Adicionar ${product.name} ao carrinho`}>Adicionar ao carrinho</Button>
+          <p className="mt-3 text-center text-xs text-muted">Carrinho será implementado em uma próxima etapa.</p>
+          <dl className="mt-8 space-y-4 border-t border-line pt-6 text-sm">
+            <div><dt className="font-semibold text-navy">Produção</dt><dd className="mt-1 text-muted">{product.productionTime}</dd></div>
+            <div><dt className="font-semibold text-navy">Envio</dt><dd className="mt-1 text-muted">{product.shippingInfo}</dd></div>
+            {product.personalization.enabled && <div><dt className="font-semibold text-navy">Personalização</dt><dd className="mt-1 text-muted">{product.personalization.instructions ?? 'Disponível para este produto demonstrativo.'}</dd></div>}
+          </dl>
+        </div>
+      </div>
+
+      <section className="mt-16 border-t border-line pt-16 md:mt-24 md:pt-24">
+        <SectionTitle eyebrow="Detalhes técnicos" title="Feito para ganhar significado." />
+        <div className="mt-8 grid gap-5 md:grid-cols-2">
+          <div className="rounded-2xl bg-ivory p-6"><h2 className="font-display text-2xl font-semibold text-navy">Sobre este exemplo</h2><p className="mt-3 text-sm leading-6 text-muted">{product.longDescription}</p></div>
+          <div className="rounded-2xl bg-ivory p-6"><h2 className="font-display text-2xl font-semibold text-navy">O que está incluído</h2><ul className="mt-3 space-y-2 text-sm leading-6 text-muted">{(product.whatsIncluded ?? product.benefits ?? ['Informações a definir']).map((item) => <li key={item}>— {item}</li>)}</ul></div>
+        </div>
+      </section>
+
+      <section className="mt-16 md:mt-24"><SectionTitle eyebrow="Dúvidas" title="Antes de escolher." /><div className="mt-8">{product.faq && <FAQ items={product.faq} />}</div></section>
+
+      <section className="mt-16 md:mt-24"><SectionTitle eyebrow="Você também pode gostar" title="Outros exemplos do catálogo." /><div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">{relatedProducts.map((item) => <ProductCard badge={item.badge} description={item.shortDescription} href={`/produto/${item.slug}`} key={item.id} name={item.name} price={item.price} />)}</div></section>
+    </Container>
+  )
+}

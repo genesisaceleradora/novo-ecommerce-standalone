@@ -1,5 +1,7 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
+import { CartDrawer } from '@/components/cart/CartDrawer'
+import { CartProvider } from '@/components/cart/CartProvider'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { Topbar } from '@/components/layout/Topbar'
@@ -21,10 +23,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="pt-BR">
       <body>
-        <Topbar />
-        <Header />
-        <main>{children}</main>
-        <Footer />
+        <CartProvider>
+          <Topbar />
+          <Header />
+          <main>{children}</main>
+          <Footer />
+          <CartDrawer />
+        </CartProvider>
       </body>
     </html>
   )

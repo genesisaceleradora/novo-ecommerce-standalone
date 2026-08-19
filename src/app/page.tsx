@@ -6,7 +6,8 @@ import { ProductCard } from '@/components/product/ProductCard'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { benefits, faqs, provisionalCategories } from '@/data/home'
+import { benefits, faqs } from '@/data/home'
+import { categories } from '@/data/categories'
 import { products } from '@/data/products'
 import { createPageMetadata } from '@/lib/seo/metadata'
 
@@ -26,7 +27,7 @@ export default function HomePage() {
       <Container className="py-16 md:py-24" id="colecoes">
         <SectionTitle description="Categorias, imagens e produtos são placeholders claros até a definição comercial." eyebrow="Estrutura preparada" title="Coleções que começam por uma história." />
         <div className="mt-9 grid gap-4 sm:grid-cols-3">
-          {provisionalCategories.map((category, index) => <CategoryCard index={index + 1} key={category.title} {...category} />)}
+          {categories.filter((category) => category.active).map((category, index) => <CategoryCard description={category.shortDescription ?? category.description} href={`/categoria/${category.slug}`} index={index + 1} key={category.id} title={category.name} />)}
         </div>
       </Container>
 

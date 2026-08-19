@@ -6,18 +6,6 @@ export const topbarBenefits = [
   '6x — Sem juros (placeholder)',
 ] as const
 
-export const provisionalCategories = [
-  { title: 'Presentes personalizados', description: 'Categoria provisória — a definir.' },
-  { title: 'Momentos especiais', description: 'Categoria provisória — a definir.' },
-  { title: 'Memórias que ficam', description: 'Categoria provisória — a definir.' },
-] as const
-
-export const provisionalProducts = [
-  { name: 'Produto exemplo', description: 'Produto demonstrativo para validar o catálogo inicial.', priceLabel: 'Preço a definir', badge: 'Exemplo' },
-  { name: 'Presente com significado', description: 'Conteúdo provisório até a definição do produto principal.', priceLabel: 'Preço a definir', badge: 'A definir' },
-  { name: 'Memória personalizada', description: 'Estrutura preparada para uma futura personalização.', priceLabel: 'Preço a definir' },
-] as const
-
 export const benefits = [
   { title: 'Feito com significado', description: 'Uma experiência pensada para transformar histórias em presentes memoráveis.' },
   { title: 'Cuidado em cada detalhe', description: 'Estética, clareza e confiança em uma jornada de compra acolhedora.' },

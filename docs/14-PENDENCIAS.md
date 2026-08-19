@@ -1,58 +1,45 @@
-# 14 — Pendências de Definição
+# 14 — Pendências para produção real
 
-## Estratégia
+## Estratégia e marca
 
-- [ ] Nome do projeto.
-- [ ] Produto principal.
-- [ ] Oferta principal.
-- [ ] Público prioritário.
-- [ ] Categorias reais.
-- [ ] Posicionamento da marca.
+- [ ] Nome do projeto e domínio final.
+- [ ] Produto principal, oferta, público prioritário e categorias reais.
+- [ ] Posicionamento, logo, paleta, tipografia, tom e manual visual finais.
+- [ ] Fotos oficiais, descrições, especificações, embalagem e regras de personalização.
 
-## Marca
+## Comercial e conteúdo
 
-- [ ] Logo.
-- [ ] Paleta final.
-- [ ] Tipografia final.
-- [ ] Tom final de comunicação.
-- [ ] Manual visual.
+- [ ] Preços, margem, desconto Pix, parcelamento, frete, prazo de produção e políticas comerciais reais.
+- [ ] Revisar todos os placeholders herdados da referência provisória, inclusive métricas e copy da topbar.
+- [ ] Redigir e revisar juridicamente política de privacidade, termos de uso e trocas/devoluções.
+- [ ] Definir WhatsApp, e-mail de suporte e fluxos de atendimento.
 
-## Comercial
+## Pagamento, pedidos e operação
 
-- [ ] Preço.
-- [ ] Margem.
-- [ ] Desconto Pix.
-- [ ] Parcelamento.
-- [ ] Frete grátis ou não.
-- [ ] Prazo real de produção.
-- [ ] Política comercial.
+- [ ] Criar conta Pagar.me, credenciais por ambiente e checkout/cobrança conforme documentação oficial.
+- [ ] Validar assinatura de webhook, persistir eventos de forma idempotente e atualizar pagamento/pedido no servidor.
+- [ ] Aplicar `database/schema.sql` via migrações no Supabase/Postgres e conectar a camada server-side.
+- [ ] Substituir pedidos, catálogo e admin mockados por dados persistidos; validar preço e estoque no servidor.
+- [ ] Criar bucket privado de uploads, RLS/políticas de acesso, URLs assinadas curtas e rotina de exclusão de arquivos.
+- [ ] Implementar cálculo de frete, cupom, rastreio e notificações transacionais reais.
 
-## Produto
+## Segurança e LGPD
 
-- [ ] Fotos oficiais.
-- [ ] Descrições.
-- [ ] Especificações técnicas.
-- [ ] Regras de personalização.
-- [ ] O que vem na caixa.
-- [ ] Embalagem.
+- [ ] Trocar o login mockado do admin por autenticação real, papéis, auditoria e rate limiting.
+- [ ] Nunca registrar documento, endereço, personalização ou arquivos em logs, analytics ou URLs.
+- [ ] Definir retenção, exclusão, exportação e atendimento aos direitos LGPD.
+- [ ] Fazer revisão de segurança antes de aceitar pagamento ou dados reais de clientes.
 
-## Operação
+## Marketing, SEO e deploy
 
-- [ ] Gateway Pagar.me com credenciais.
-- [ ] Conta Pagar.me ativa.
-- [ ] Eventos/webhooks necessários.
-- [ ] Banco de dados.
-- [ ] Storage.
-- [ ] Domínio final.
-- [ ] WhatsApp de atendimento.
-- [ ] E-mail de suporte.
+- [ ] Configurar domínio HTTPS e `NEXT_PUBLIC_SITE_URL` na Vercel; confirmar canonical, sitemap e robots de produção.
+- [ ] Só liberar indexação depois de conteúdo, domínio e páginas legais revisados.
+- [ ] Configurar e validar Meta Pixel, GA4, GTM, UTMs padrão e consentimento de cookies conforme necessidade jurídica.
+- [ ] Substituir metadata, Open Graph, JSON-LD, imagens e copy provisórios pelos dados reais da marca/produto.
+- [ ] Criar monitoramento de erros, alertas de pagamento/webhook e rotina de backup antes do lançamento.
 
-## Marketing
+## Melhorias após o MVP
 
-- [ ] Meta Pixel.
-- [ ] GA4.
-- [ ] GTM.
-- [ ] Catálogo Meta, se aplicável.
-- [ ] Criativos.
-- [ ] UTMs padrão.
-- [ ] SEO final.
+- [ ] Testes automatizados de fluxos críticos e testes de acessibilidade mais completos.
+- [ ] Área do cliente, CRM, integrações de ERP, estoque avançado e automações de produção/WhatsApp, se fizerem sentido.
+- [ ] Painel administrativo com filtros, edição de rastreio, permissões e operação baseada em dados reais.

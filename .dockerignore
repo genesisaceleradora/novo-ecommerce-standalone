@@ -1,0 +1,25 @@
+# Dependencies and build output are recreated in the image.
+node_modules
+.next
+out
+dist
+coverage
+
+# Local configuration and credentials must never enter the build context.
+.env
+.env.local
+.env.*.local
+
+# Repository and editor metadata are not needed to build or run the app.
+.git
+.gitignore
+.DS_Store
+.vercel
+.codex
+.agents
+
+# Logs are not needed to build or run the app.
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*

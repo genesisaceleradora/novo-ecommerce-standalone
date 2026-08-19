@@ -32,7 +32,9 @@
 
 ## Marketing, SEO e deploy
 
-- [ ] Configurar domínio HTTPS e `NEXT_PUBLIC_SITE_URL` na Vercel; confirmar canonical, sitemap e robots de produção.
+- [ ] Provisionar servidor/container registry, proxy reverso HTTPS, certificados, firewall, health checks, monitoramento, alertas e backups para o deploy Docker.
+- [ ] Configurar domínio HTTPS e `NEXT_PUBLIC_SITE_URL` no ambiente do container; confirmar canonical, sitemap e robots de produção.
+- [ ] Definir gestão segura de variáveis no servidor e rotação de segredos; nunca incluir `.env` ou chaves na imagem Docker.
 - [ ] Só liberar indexação depois de conteúdo, domínio e páginas legais revisados.
 - [ ] Configurar e validar Meta Pixel, GA4, GTM, UTMs padrão e consentimento de cookies conforme necessidade jurídica.
 - [ ] Substituir metadata, Open Graph, JSON-LD, imagens e copy provisórios pelos dados reais da marca/produto.

@@ -59,18 +59,38 @@ Copie `.env.example` para `.env.local`. Não envie `.env.local`, chaves ou token
 4. O checkout valida dados obrigatórios, cria uma confirmação mockada server-side e redireciona para `/obrigado`.
 5. O admin em `/admin` usa sessão mockada, lista pedidos demonstrativos e mantém mudanças de status apenas no navegador.
 
-## Deploy na Vercel
+## Docker e deploy em servidor próprio
 
-1. Importe o repositório na Vercel e mantenha o preset Next.js detectado automaticamente.
-2. Configure as variáveis do grupo **Site** para Preview e Production. Em Production, `NEXT_PUBLIC_SITE_URL` deve usar o domínio final HTTPS.
-3. Configure somente no servidor as chaves futuras de Pagar.me, Supabase e Storage. Não use o prefixo `NEXT_PUBLIC_` para segredos.
-4. Defina `ADMIN_PASSWORD` em Production. A senha de desenvolvimento não funciona em produção.
-5. Faça o deploy e valide `/`, `/categoria/personalizados`, `/produto/produto-personalizado-exemplo`, `/checkout`, `/admin`, `/robots.txt` e `/sitemap.xml`.
+Pré-requisitos: Docker Engine com Docker Compose. Para executar localmente, crie o arquivo de ambiente antes de subir o container:
+
+```bash
+cp .env.example .env.local
+docker compose up --build
+```
+
+O app ficará disponível em [http://localhost:3000](http://localhost:3000). Para executar a imagem sem Compose:
+
+```bash
+docker build -t novo-ecommerce-standalone .
+docker run --rm -p 3000:3000 --env-file .env.local novo-ecommerce-standalone
+```
+
+O `Dockerfile` faz um build multi-stage com Node.js 22 LTS e usa o output `standalone` do Next.js; a imagem final contém somente o servidor compilado e seus assets necessários. Nenhum `.env` entra na imagem: `docker-compose.yml` fornece as variáveis em runtime por `.env.local`, e um servidor deve fornecê-las por arquivo de ambiente seguro ou pelo seu gerenciador de secrets.
+
+Para um deploy próprio:
+
+1. Construa e publique a imagem no registro de containers escolhido, ou faça o build diretamente no servidor.
+2. Defina as variáveis do grupo **Site** no ambiente do container. Em produção, `NEXT_PUBLIC_SITE_URL` deve usar o domínio final HTTPS, sem barra ao final.
+3. Defina `ADMIN_PASSWORD` como secret do ambiente. As chaves futuras de Pagar.me, Supabase e Storage também devem permanecer somente no servidor, sem prefixo `NEXT_PUBLIC_`.
+4. Execute o container com a porta interna `3000` publicada pelo proxy reverso HTTPS do servidor.
+5. Valide `/`, `/categoria/personalizados`, `/produto/produto-personalizado-exemplo`, `/checkout`, `/admin`, `/robots.txt` e `/sitemap.xml`.
 6. Só permita indexação quando domínio, marca, catálogo, páginas legais e conteúdo real estiverem prontos. Sem URL de produção configurada, `robots.txt` bloqueia rastreadores deliberadamente.
+
+> Variáveis iniciadas por `NEXT_PUBLIC_` usadas em código de navegador são incorporadas durante `npm run build`. Para alterá-las em uma imagem de produção, faça o build da imagem com os valores públicos aprovados no ambiente de build ou gere uma nova imagem; nunca passe segredos como argumentos de build.
 
 ## Limitações e próximos passos
 
-Este projeto não deve receber pedidos reais ainda. Faltam integração Pagar.me com webhook assinado, persistência de pedidos em Supabase/Postgres, RLS, storage privado, autenticação administrativa real, conteúdo legal revisado, catálogo e identidade finais. Consulte [docs/14-PENDENCIAS.md](docs/14-PENDENCIAS.md) para a lista de produção.
+Este projeto não deve receber pedidos reais ainda. Faltam integração Pagar.me com webhook assinado, persistência de pedidos em Supabase/Postgres, RLS, storage privado, autenticação administrativa real, conteúdo legal revisado, catálogo e identidade finais. O Docker entrega apenas a aplicação; ainda é necessário configurar domínio HTTPS, proxy reverso, secrets, monitoramento e backups. Consulte [docs/14-PENDENCIAS.md](docs/14-PENDENCIAS.md) para a lista de produção.
 
 ## Como usar com o Codex
 

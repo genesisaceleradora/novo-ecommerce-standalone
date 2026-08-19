@@ -5,10 +5,13 @@ import { ProductCard } from '@/components/product/ProductCard'
 import { ProductGallery } from '@/components/product/ProductGallery'
 import { Badge } from '@/components/ui/Badge'
 import { ProductPersonalization } from '@/components/product/ProductPersonalization'
+import { BreadcrumbSchema, ProductSchema } from '@/components/seo/Schemas'
+import { ProductViewTracking } from '@/components/tracking/ProductViewTracking'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { getRelatedProducts, getProductBySlug, products } from '@/data/products'
 import { formatPriceInBRL } from '@/lib/formatters'
+import { createPageMetadata } from '@/lib/seo/metadata'
 
 type ProductPageProps = { params: Promise<{ slug: string }> }
 
@@ -19,7 +22,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
   const product = getProductBySlug((await params).slug)
   if (!product) return {}
-  return { title: product.seoTitle, description: product.seoDescription }
+  return createPageMetadata({ title: product.seoTitle, description: product.seoDescription, path: `/produto/${product.slug}` })
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
@@ -30,6 +33,9 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <Container className="py-10 md:py-16">
+      <ProductSchema product={product} />
+      <BreadcrumbSchema items={[{ name: 'Início', path: '/' }, { name: 'Catálogo', path: `/categoria/${product.categorySlug}` }, { name: product.name, path: `/produto/${product.slug}` }]} />
+      <ProductViewTracking product={product} />
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">Catálogo demonstrativo / {product.categorySlug}</p>
       <div className="mt-5 grid gap-10 lg:grid-cols-2 lg:gap-14">
         <ProductGallery images={product.images} productName={product.name} />

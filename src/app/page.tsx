@@ -8,6 +8,9 @@ import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { benefits, faqs, provisionalCategories } from '@/data/home'
 import { products } from '@/data/products'
+import { createPageMetadata } from '@/lib/seo/metadata'
+
+export const metadata = createPageMetadata({ title: 'A definir | Ecommerce standalone', description: 'Produtos e presentes com significado — conteúdo provisório.', path: '/' })
 
 export default function HomePage() {
   return (

@@ -1,5 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { Container } from '@/components/ui/Container'
+import { useCart } from '@/hooks/useCart'
 
 const navigation = [
   { href: '/categoria/personalizados', label: 'Coleções' },
@@ -8,6 +11,7 @@ const navigation = [
 ]
 
 export function Header() {
+  const { itemCount, openCart } = useCart()
   return (
     <header className="sticky top-0 z-20 border-b border-line/80 bg-cream/95 backdrop-blur">
       <Container className="flex h-[68px] items-center justify-between">
@@ -19,10 +23,10 @@ export function Header() {
         <nav aria-label="Navegação principal" className="hidden items-center gap-8 text-sm font-medium md:flex">
           {navigation.map((item) => <Link className="hover:text-gold-dark" href={item.href} key={item.href}>{item.label}</Link>)}
         </nav>
-        <a aria-label="Ver carrinho" className="flex items-center gap-2 text-sm font-semibold hover:text-gold-dark" href="#carrinho">
-          <span aria-hidden="true" className="grid h-8 w-8 place-items-center rounded-full border border-navy/20">◌</span>
+        <button aria-label={`Ver carrinho com ${itemCount} item(ns)`} className="flex items-center gap-2 text-sm font-semibold hover:text-gold-dark" onClick={openCart} type="button">
+          <span aria-hidden="true" className="relative grid h-8 w-8 place-items-center rounded-full border border-navy/20">◌{itemCount > 0 && <span className="absolute -right-2 -top-2 grid min-h-5 min-w-5 place-items-center rounded-full bg-gold px-1 text-[10px] font-bold text-ink">{itemCount}</span>}</span>
           <span className="hidden sm:inline">Carrinho</span>
-        </a>
+        </button>
       </Container>
     </header>
   )

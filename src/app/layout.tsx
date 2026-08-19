@@ -14,11 +14,11 @@ import './globals.css'
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: 'A definir | Ecommerce standalone',
-    template: '%s | A definir',
+    default: `${siteConfig.name} | Ecommerce standalone`,
+    template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
-  ...createPageMetadata({ title: 'A definir | Ecommerce standalone', description: siteConfig.description, path: '/' }),
+  ...createPageMetadata({ title: `${siteConfig.name} | Ecommerce standalone`, description: siteConfig.description, path: '/' }),
 }
 
 type RootLayoutProps = Readonly<{ children: ReactNode }>

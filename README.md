@@ -12,6 +12,37 @@ Este repositório começa como uma pasta de documentação para o Codex criar um
 - **Referência estratégica provisória:** ecommerce Eternize standalone.
 - **Objetivo:** criar uma base de ecommerce premium, mobile first, escalável, preparada para SEO, tráfego pago, tracking, checkout, carrinho, personalização e painel administrativo.
 
+## Rodar localmente
+
+Pré-requisitos: Node.js 20.9 ou superior e npm ou pnpm.
+
+```bash
+npm install
+npm run dev
+```
+
+Ou, com pnpm:
+
+```bash
+pnpm install
+pnpm dev
+```
+
+Abra [http://localhost:3000](http://localhost:3000). Os comandos disponíveis são:
+
+```bash
+npm run dev
+npm run lint
+npm run build
+npm run start
+```
+
+Copie `.env.example` para `.env.local` quando precisar configurar integrações. Nenhuma credencial deve ser incluída no repositório.
+
+## Implementação inicial
+
+A primeira implementação contém o scaffold Next.js com App Router, TypeScript, Tailwind e ESLint, além de layout global, topbar, header, footer e home provisória. A identidade visual e a copy são referências temporárias e todos os dados de marca e produto permanecem como `A definir`.
+
 ## Como usar com o Codex
 
 1. Abra esta pasta/repositório no Codex.

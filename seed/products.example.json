@@ -1,0 +1,56 @@
+[
+  {
+    "id": "prod-exemplo-personalizado",
+    "name": "Produto Personalizado Exemplo",
+    "slug": "produto-personalizado-exemplo",
+    "categorySlug": "personalizados",
+    "badge": "Exemplo",
+    "shortDescription": "Produto placeholder para validar a estrutura de ecommerce.",
+    "longDescription": "Este produto é apenas um exemplo temporário. Substituir pelo produto real quando for definido.",
+    "price": 19990,
+    "compareAtPrice": null,
+    "pixDiscountPercent": 5,
+    "installmentMax": 6,
+    "images": [
+      {
+        "src": "/images/placeholders/produto-exemplo-1.jpg",
+        "alt": "Produto personalizado exemplo",
+        "type": "gallery"
+      }
+    ],
+    "personalization": {
+      "enabled": true,
+      "fields": {
+        "name": true,
+        "phrase": true,
+        "notes": true,
+        "imageUpload": true
+      },
+      "requiredFields": [
+        "name"
+      ],
+      "instructions": "Envie os dados de personalização para simular o fluxo."
+    },
+    "productionTime": "Produção média: 3 dias úteis (placeholder herdado da Eternize; revisar).",
+    "shippingInfo": "Envio para todo o Brasil.",
+    "whatsIncluded": [
+      "Produto personalizado",
+      "Embalagem",
+      "Suporte de atendimento"
+    ],
+    "benefits": [
+      "Presente com significado",
+      "Produção cuidadosa",
+      "Compra segura"
+    ],
+    "faq": [
+      {
+        "question": "Este produto é real?",
+        "answer": "Ainda não. Este é um produto placeholder para desenvolvimento."
+      }
+    ],
+    "seoTitle": "Produto personalizado exemplo | A definir",
+    "seoDescription": "Produto placeholder para estrutura do novo ecommerce standalone.",
+    "active": true
+  }
+]

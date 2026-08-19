@@ -39,6 +39,10 @@ npm run start
 
 Copie `.env.example` para `.env.local` quando precisar configurar integrações. Nenhuma credencial deve ser incluída no repositório.
 
+### Admin mockado local
+
+O painel está disponível em [http://localhost:3000/admin](http://localhost:3000/admin). Defina `ADMIN_PASSWORD` em `.env.local` para escolher a senha do ambiente. Sem essa variável, apenas durante `npm run dev`, a senha de desenvolvimento é `admin-local-dev-only`. Ela existe exclusivamente para testar a base visual local e nunca deve ser usada fora do desenvolvimento. Em produção, uma `ADMIN_PASSWORD` é obrigatória; esta autenticação continua sendo um mock e deve ser substituída por um provedor de identidade antes do lançamento.
+
 ## Implementação inicial
 
 A primeira implementação contém o scaffold Next.js com App Router, TypeScript, Tailwind e ESLint, além de layout global, topbar, header, footer e home provisória. A identidade visual e a copy são referências temporárias e todos os dados de marca e produto permanecem como `A definir`.

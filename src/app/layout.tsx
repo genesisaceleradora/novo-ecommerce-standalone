@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import type { ReactNode } from 'react'
-import { Footer } from '@/components/Footer'
-import { Header } from '@/components/Header'
-import { Topbar } from '@/components/Topbar'
+import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
+import { Topbar } from '@/components/layout/Topbar'
 import { siteConfig } from '@/lib/site'
 import './globals.css'
 

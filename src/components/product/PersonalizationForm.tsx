@@ -2,6 +2,7 @@
 
 import type { CartCustomization } from '@/components/cart/CartContext'
 import type { PersonalizationConfig } from '@/types'
+import { trackEvent } from '@/lib/tracking/events'
 
 const maximumFileSizeInBytes = 10 * 1024 * 1024
 
@@ -21,8 +22,10 @@ export function PersonalizationForm({ config, value, errors = [], onChange }: Pe
 
   function handleFiles(selectedFiles: FileList | null) {
     const files = Array.from(selectedFiles ?? [])
+    if (files.length > 0) trackEvent('UploadStarted', { file_count: files.length })
     const validFiles = files.filter((file) => file.type.startsWith('image/') && file.size <= maximumFileSizeInBytes)
     onChange({ ...value, uploadedFiles: validFiles.map((file) => ({ name: file.name })) })
+    if (validFiles.length > 0) trackEvent('UploadCompleted', { file_count: validFiles.length })
   }
 
   return (

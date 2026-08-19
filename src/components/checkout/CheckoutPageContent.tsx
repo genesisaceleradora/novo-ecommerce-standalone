@@ -2,12 +2,13 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { useCart } from '@/hooks/useCart'
 import { formatPriceInBRL } from '@/lib/formatters'
+import { trackEvent } from '@/lib/tracking/events'
 import type { CheckoutFormData, MockOrderConfirmation } from '@/types/checkout'
 
 const initialFormData: CheckoutFormData = {
@@ -29,6 +30,10 @@ export function CheckoutPageContent() {
   const [formData, setFormData] = useState(initialFormData)
   const [error, setError] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
+
+  useEffect(() => {
+    if (isHydrated && items.length > 0) trackEvent('InitiateCheckout', { value: subtotal / 100, currency: 'BRL', num_items: items.length })
+  }, [isHydrated, items.length, subtotal])
 
   function updateField(field: keyof CheckoutFormData, value: string) {
     setFormData((current) => ({ ...current, [field]: value }))

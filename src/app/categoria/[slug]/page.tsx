@@ -5,6 +5,8 @@ import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
 import { categories, getCategoryBySlug } from '@/data/categories'
 import { products } from '@/data/products'
+import { BreadcrumbSchema } from '@/components/seo/Schemas'
+import { createPageMetadata } from '@/lib/seo/metadata'
 
 type CategoryPageProps = { params: Promise<{ slug: string }> }
 
@@ -15,7 +17,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: CategoryPageProps): Promise<Metadata> {
   const category = getCategoryBySlug((await params).slug)
   if (!category) return {}
-  return { title: category.seoTitle, description: category.seoDescription }
+  return createPageMetadata({ title: category.seoTitle, description: category.seoDescription, path: `/categoria/${category.slug}` })
 }
 
 export default async function CategoryPage({ params }: CategoryPageProps) {
@@ -25,6 +27,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <>
+      <BreadcrumbSchema items={[{ name: 'Início', path: '/' }, { name: category.name, path: `/categoria/${category.slug}` }]} />
       <section className="bg-ink py-16 text-cream md:py-20">
         <Container>
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">{category.eyebrow ?? 'Coleção provisória'}</p>

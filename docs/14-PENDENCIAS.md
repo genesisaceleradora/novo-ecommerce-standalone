@@ -36,7 +36,7 @@
 
 ## Plataforma e dados
 
-- [ ] Migrar o catálogo legado para o domínio Galanta.
+- [x] Migrar o catálogo estrutural legado para o domínio Galanta.
 - [ ] Migrar carrinho/checkout para solicitação técnica.
 - [ ] Migrar admin de pedidos para leads.
 - [ ] Atualizar `database/schema.sql` para o domínio B2B antes de aplicá-lo.

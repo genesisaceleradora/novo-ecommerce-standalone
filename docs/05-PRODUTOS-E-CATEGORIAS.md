@@ -3,6 +3,13 @@
 ## 1. Estado atual
 
 ```txt
+Fase 4: concluída em 20/08/2026
+Domínio tipado: implementado em src/types/catalog.ts
+Dados estruturais: implementados em src/data/catalog.ts
+Catálogo final aprovado: pendente
+```
+
+```txt
 Marca: Galanta Medical — final
 Linha: Galanta Ortho — final
 Produto/modelo: a confirmar
@@ -141,3 +148,13 @@ CTA: Registrar interesse técnico
 - schema acompanha o mesmo nível de aprovação da página.
 
 Consultar `18-GALANTA-ORTHO-PRODUCT-TAXONOMY.md` para a modelagem completa.
+
+## 11. Implementação estrutural
+
+- `/produtos` apresenta categorias e registros estruturais;
+- `/categoria/[slug]` suporta Standard, Personal, Amostras Técnicas e Materiais Técnicos;
+- `/produto/[slug]` apresenta status, galeria placeholder, variações demonstrativas, especificações, documentos, avisos, FAQ e relacionados;
+- slugs antigos redirecionam para os registros Galanta correspondentes;
+- o novo catálogo não importa preço, personalização afetiva ou estado do carrinho legado;
+- produtos e categorias pendentes permanecem fora do sitemap e com indexação bloqueada;
+- nenhum `Offer` é gerado enquanto não existir venda real.

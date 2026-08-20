@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title description">
+  <title id="title">Placeholder de detalhe técnico</title>
+  <desc id="description">Diagrama abstrato sem parâmetros, produto ou aplicação clínica.</desc>
+  <rect width="1200" height="900" fill="#111827"/>
+  <g fill="none" stroke="#00B8C7">
+    <circle cx="600" cy="430" r="250" stroke-opacity=".18"/>
+    <circle cx="600" cy="430" r="170" stroke-opacity=".35"/>
+    <circle cx="600" cy="430" r="92" stroke-opacity=".7" stroke-width="3"/>
+    <path d="M180 430h840M600 90v680" stroke-opacity=".2" stroke-dasharray="10 16"/>
+  </g>
+  <rect x="514" y="344" width="172" height="172" rx="42" fill="none" stroke="#2EE6F0" stroke-width="3" transform="rotate(45 600 430)"/>
+  <text x="72" y="776" fill="#D8E1E8" fill-opacity=".72" font-family="monospace" font-size="23" letter-spacing="4">DETALHE TÉCNICO · CONTEÚDO PENDENTE</text>
+  <text x="72" y="818" fill="#7A8A99" font-family="sans-serif" font-size="20">Sem escala, parâmetro, material ou instrução operacional.</text>
+</svg>

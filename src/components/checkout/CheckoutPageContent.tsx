@@ -63,7 +63,7 @@ export function CheckoutPageContent() {
   }
 
   if (!isHydrated) return <Container className="py-16"><p className="text-sm text-steel">Carregando seu carrinho…</p></Container>
-  if (items.length === 0) return <Container className="py-16 md:py-24"><SectionTitle eyebrow="Checkout" title="Seu carrinho está vazio." description="Escolha um produto demonstrativo antes de seguir para o checkout." /><Link className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-cyan px-6 text-sm font-semibold text-galanta-black" href="/categoria/personalizados">Ver produtos</Link></Container>
+  if (items.length === 0) return <Container className="py-16 md:py-24"><SectionTitle eyebrow="Fluxo legado" title="Checkout demonstrativo sem itens." description="O catálogo Galanta não inicia compra ou pagamento. A solicitação técnica substituirá esta rota na Fase 5." /><Link className="mt-8 inline-flex min-h-12 items-center justify-center rounded-full bg-cyan px-6 text-sm font-semibold text-galanta-black" href="/produtos">Consultar catálogo profissional</Link></Container>
 
   return (
     <Container className="py-10 md:py-16">

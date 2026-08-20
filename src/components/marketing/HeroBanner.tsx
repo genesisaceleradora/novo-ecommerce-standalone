@@ -5,12 +5,13 @@ import { Container } from '@/components/ui/Container'
 type HeroBannerProps = {
   description: string
   eyebrow: string
+  notice?: string
   primaryAction: { label: string; href: string }
   secondaryAction?: { label: string; href: string }
   title: string
 }
 
-export function HeroBanner({ description, eyebrow, primaryAction, secondaryAction, title }: HeroBannerProps) {
+export function HeroBanner({ description, eyebrow, notice, primaryAction, secondaryAction, title }: HeroBannerProps) {
   return (
     <section className="relative isolate overflow-hidden bg-galanta-black py-20 text-sterile md:py-28 lg:py-32">
       <div aria-hidden="true" className="absolute inset-0 opacity-35 [background-image:linear-gradient(rgb(216_225_232_/_0.09)_1px,transparent_1px),linear-gradient(90deg,rgb(216_225_232_/_0.09)_1px,transparent_1px)] [background-size:48px_48px] [mask-image:linear-gradient(to_bottom,black,transparent_85%)]" />
@@ -24,6 +25,7 @@ export function HeroBanner({ description, eyebrow, primaryAction, secondaryActio
           <Button href={primaryAction.href}>{primaryAction.label}</Button>
           {secondaryAction && <Button href={secondaryAction.href} variant="secondary">{secondaryAction.label}</Button>}
         </div>
+        {notice && <p className="mt-8 max-w-2xl border-l border-alert/70 pl-4 font-technical text-[10px] uppercase leading-5 tracking-[0.1em] text-mist/60">{notice}</p>}
       </Container>
     </section>
   )

@@ -34,6 +34,8 @@ Branch: feat/galanta-medical-design-system
 
 ## Task 3 — Site institucional
 
+Status: concluída em 20/08/2026.
+
 ```txt
 Branch: feat/galanta-medical-site-foundation
 ```

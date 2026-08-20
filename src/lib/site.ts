@@ -8,5 +8,4 @@ export const siteConfig = {
   description: 'Tecnologia, engenharia e manufatura digital aplicada à saúde. Portal profissional Galanta Medical.',
   supportWhatsApp: process.env.NEXT_PUBLIC_SUPPORT_WHATSAPP?.trim(),
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL?.trim(),
-  hasProductionUrl: Boolean(configuredSiteUrl && !configuredSiteUrl.includes('localhost')),
 } as const

@@ -10,6 +10,8 @@ O plano não valida claims clínicos, situação regulatória, finalidade preten
 Status do plano: aprovado como base de desenvolvimento
 Fase 0: concluída em 20/08/2026
 Fase 1: concluída em 20/08/2026
+Fase 2: concluída em 20/08/2026
+Fase 3: concluída em 20/08/2026
 Marca master: Galanta Medical — nome final
 Linha inicial: Galanta Ortho — nome final
 Categoria planejada: órteses e imobilizadores 3D
@@ -231,6 +233,8 @@ Entregas:
 
 ## 8. Fase 3 — Home e estrutura institucional
 
+Status: concluída em 20/08/2026. A home, a navegação profissional, o footer institucional e as rotas estruturais Galanta foram implementados com copy segura, CTAs de interesse e placeholders explícitos, sem migrar o catálogo ou os fluxos legados neste PR.
+
 Branch recomendada:
 
 ```txt
@@ -243,7 +247,7 @@ Entregas:
 - navegação profissional;
 - hero clínico-industrial;
 - Standard + Personal;
-- fluxo selecionar, aquecer, moldar e ajustar;
+- fluxo conceitual selecionar, preparar conforme protocolo aprovado, adaptar por profissional e verificar;
 - públicos atendidos;
 - processo de avaliação técnica;
 - CTA para apresentação/amostras;
@@ -564,4 +568,4 @@ Cada etapa só está pronta quando:
 
 ## 19. Próxima ação
 
-Versionar o design system e iniciar a Fase 3 em PR separado: implementar a home e a estrutura institucional Galanta Medical sem migrar o catálogo ou o fluxo B2B no mesmo PR.
+Iniciar a Fase 4 em PR separado: modelar e implementar o catálogo Galanta Ortho com dados seguros e explícitos, sem preço, oferta comercial ou afirmação regulatória não aprovada.

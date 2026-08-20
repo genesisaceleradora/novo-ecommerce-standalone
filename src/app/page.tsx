@@ -1,16 +1,18 @@
+import { InstitutionalCta } from '@/components/institutional/InstitutionalCta'
+import { LineCard } from '@/components/institutional/LineCard'
+import { ProcessSteps } from '@/components/institutional/ProcessSteps'
 import { CapabilityCard } from '@/components/marketing/CapabilityCard'
 import { FAQ } from '@/components/marketing/FAQ'
 import { HeroBanner } from '@/components/marketing/HeroBanner'
-import { Button } from '@/components/ui/Button'
 import { ComplianceNotice } from '@/components/ui/ComplianceNotice'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { capabilities, faqs, processSteps } from '@/data/home'
+import { conceptualProcess, engineeringCapabilities, interestProcess, platformPillars, productLines, professionalAudiences, professionalFaqs } from '@/data/institutional'
 import { createPageMetadata } from '@/lib/seo/metadata'
 
 export const metadata = createPageMetadata({
-  title: 'Galanta Medical | Tecnologia aplicada à saúde',
-  description: 'Portal profissional Galanta Medical com Galanta Ortho como linha inicial em desenvolvimento.',
+  title: 'Galanta Medical | Tecnologia aplicada à rotina clínica',
+  description: 'Conheça a Galanta Medical e a estrutura Standard + Personal da linha Galanta Ortho para profissionais, clínicas e hospitais.',
   path: '/',
 })
 
@@ -18,67 +20,83 @@ export default function HomePage() {
   return (
     <>
       <HeroBanner
-        description="Portal profissional preparado para apresentar a Galanta Ortho, organizar informações aprovadas e qualificar interesse técnico de profissionais, clínicas e hospitais."
+        description="Estrutura Standard + Personal desenvolvida com engenharia e manufatura digital para profissionais, clínicas e hospitais."
         eyebrow="Galanta Medical · Portal profissional"
-        primaryAction={{ label: 'Conhecer a estrutura', href: '#solucoes' }}
-        secondaryAction={{ label: 'Falar com a equipe', href: '/contato' }}
-        title="Tecnologia, engenharia e manufatura digital aplicada à saúde."
+        notice="Conteúdo e especificações em desenvolvimento. Esta apresentação não constitui indicação clínica ou oferta comercial."
+        primaryAction={{ label: 'Solicitar apresentação técnica', href: '/contato' }}
+        secondaryAction={{ label: 'Conhecer Galanta Ortho', href: '/galanta-ortho' }}
+        title="Órteses 3D para a rotina clínica moderna."
       />
 
-      <Container className="py-16 md:py-24" id="solucoes">
-        <SectionTitle description="A linha inicial será organizada em duas arquiteturas configuráveis. Produtos, aplicações e especificações permanecem em validação." eyebrow="Galanta Ortho" title="Estrutura Standard + Personal." />
-        <div className="mt-10 grid gap-5 md:grid-cols-2">
-          <CapabilityCard description="Soluções padronizadas por modelo, tamanho e lado quando essas configurações forem tecnicamente confirmadas." index={1} label="Linha" title="Standard" />
-          <CapabilityCard description="Soluções para casos selecionados, condicionadas às informações e avaliações profissionais aplicáveis." index={2} label="Linha" title="Personal" />
-        </div>
-      </Container>
+      <section className="py-16 md:py-24">
+        <Container>
+          <div className="grid gap-10 lg:grid-cols-[1fr_0.85fr] lg:items-center">
+            <SectionTitle description="Galanta Ortho é a linha inicial da Galanta Medical para o desenvolvimento de soluções Standard e Personal voltadas a profissionais e pontos de atendimento." eyebrow="Arquitetura de marca" title="Engenharia e manufatura digital aplicadas à saúde." />
+            <ComplianceNotice title="Escopo em desenvolvimento" tone="validation">Produto, finalidade, materiais, configurações e situação regulatória permanecem em validação. Nenhuma lacuna será preenchida com uma afirmação provável.</ComplianceNotice>
+          </div>
+        </Container>
+      </section>
 
       <section className="border-y border-mist bg-white py-16 md:py-24">
         <Container>
-          <SectionTitle description="Pilares de plataforma e operação. Não representam promessa clínica, disponibilidade ou resultado de produto." eyebrow="Fundação da linha" title="Disponibilidade, adaptação e personalização." />
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
-            {capabilities.map((capability, index) => <CapabilityCard index={index + 1} key={capability.title} {...capability} />)}
-          </div>
+          <SectionTitle description="Duas estruturas complementares, apresentadas sem preço, disponibilidade ou especificações não confirmadas." eyebrow="Galanta Ortho" title="Standard + Personal." />
+          <div className="mt-10 grid gap-5 md:grid-cols-2">{productLines.map((line) => <LineCard key={line.title} {...line} />)}</div>
         </Container>
       </section>
 
-      <Container className="py-16 md:py-24" id="como-funciona">
-        <SectionTitle description="O fluxo comercial definitivo será detalhado após as decisões de produto, amostras e atendimento." eyebrow="Fluxo em desenvolvimento" title="Uma jornada profissional, clara e verificável." />
-        <ol className="mt-10 grid gap-8 md:grid-cols-3">
-          {processSteps.map((step, index) => (
-            <li className="border-t border-cyan/45 pt-5" key={step.title}>
-              <span className="font-technical text-[11px] font-semibold text-cyan">{String(index + 1).padStart(2, '0')}</span>
-              <h3 className="mt-4 font-display text-2xl font-semibold tracking-[-0.03em] text-slate">{step.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-steel">{step.description}</p>
-            </li>
-          ))}
-        </ol>
-      </Container>
+      <section className="py-16 md:py-24">
+        <Container>
+          <SectionTitle description="Pilares de plataforma e operação. Eles não representam promessa clínica, disponibilidade imediata ou desempenho de produto." eyebrow="Fundação da linha" title="Disponibilidade, adaptação e personalização." />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">{platformPillars.map((pillar, index) => <CapabilityCard index={index + 1} key={pillar.title} {...pillar} />)}</div>
+        </Container>
+      </section>
+
+      <section className="border-y border-mist bg-white py-16 md:py-24">
+        <Container>
+          <SectionTitle description="Visão de processo sem temperatura, tempo, indicação ou instrução operacional. Qualquer protocolo futuro dependerá de aprovação aplicável." eyebrow="Como funciona" title="Um processo profissional, apresentado com contexto." />
+          <div className="mt-10"><ProcessSteps items={conceptualProcess} /></div>
+          <ComplianceNotice className="mt-10" title="Protocolo não publicado" tone="warning">A preparação, adaptação e verificação dependem de orientação profissional e conteúdo técnico ainda em validação.</ComplianceNotice>
+        </Container>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <Container>
+          <SectionTitle description="Conteúdo voltado a avaliação técnica e diálogo institucional. O portal não estimula autodiagnóstico ou compra sem profissional." eyebrow="Públicos" title="Estrutura para profissionais e pontos de atendimento." />
+          <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">{professionalAudiences.map((audience, index) => <CapabilityCard href={audience.href} index={index + 1} key={audience.title} label={audience.label} title={audience.title} description={audience.description} />)}</div>
+        </Container>
+      </section>
 
       <section className="bg-graphite py-16 text-sterile md:py-24">
         <Container>
+          <SectionTitle description="A plataforma será preparada para receber requisitos, versões e documentos aprovados sem transformar capacidade estrutural em promessa de resultado." eyebrow="Clinical Tech Industrial" title="Engenharia, processo e rastreabilidade." tone="dark" />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">{engineeringCapabilities.map((capability, index) => <CapabilityCard index={index + 1} key={capability.title} {...capability} />)}</div>
+        </Container>
+      </section>
+
+      <section className="py-16 md:py-24">
+        <Container>
+          <SectionTitle description="A solicitação B2B completa será implementada em uma fase própria. Nesta etapa, o contato profissional permanece como destino provisório." eyebrow="Interesse profissional" title="Da apresentação ao próximo passo." />
+          <div className="mt-10"><ProcessSteps items={interestProcess} /></div>
+        </Container>
+      </section>
+
+      <section className="border-y border-mist bg-white py-16 md:py-24">
+        <Container>
           <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
-            <SectionTitle description="A plataforma evolui sem preencher lacunas técnicas com afirmações prováveis. Cada informação será publicada conforme sua fonte e aprovação." eyebrow="Desenvolvimento responsável" title="Clareza antes da complexidade." tone="dark" />
-            <ComplianceNotice title="Informação em validação" tone="warning">
-              Conteúdo de apresentação em desenvolvimento. Informações técnicas e regulatórias serão publicadas após validação e aprovação aplicáveis.
-            </ComplianceNotice>
+            <SectionTitle description="Conheça a estrutura prevista para apresentação e avaliação de amostras sem pressupor disponibilidade, envio ou uso permitido." eyebrow="Amostras técnicas" title="Avaliação profissional com limites explícitos." />
+            <div><ComplianceNotice title="Fluxo demonstrativo" tone="warning">Condições, disponibilidade, finalidade e uso permitido das amostras serão confirmados pela equipe Galanta.</ComplianceNotice><a className="mt-5 inline-block text-sm font-semibold text-cyan" href="/amostras-tecnicas">Conhecer a estrutura de amostras →</a></div>
           </div>
         </Container>
       </section>
 
-      <Container className="py-16 md:py-24">
-        <SectionTitle eyebrow="Dúvidas frequentes" title="Informação profissional com contexto." />
-        <div className="mt-8"><FAQ items={faqs} /></div>
-      </Container>
+      <section className="py-16 md:py-24">
+        <Container>
+          <SectionTitle eyebrow="Dúvidas frequentes" title="Informação profissional com contexto." />
+          <div className="mt-8"><FAQ items={professionalFaqs} /></div>
+        </Container>
+      </section>
 
-      <Container className="pb-16 md:pb-24">
-        <div className="rounded-2xl border border-cyan/25 bg-galanta-black px-6 py-12 text-center text-sterile sm:px-12 md:py-16">
-          <p className="font-technical text-[11px] font-semibold uppercase tracking-[0.14em] text-aqua">Contato profissional</p>
-          <h2 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">Converse com a equipe Galanta.</h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-mist/70">O canal definitivo e o prazo de retorno ainda serão confirmados. Nenhuma informação de paciente deve ser enviada.</p>
-          <Button className="mt-7" href="/contato">Acessar contato</Button>
-        </div>
-      </Container>
+      <InstitutionalCta description="Registre seu interesse em conhecer a proposta. O canal completo de solicitação será disponibilizado na próxima etapa do desenvolvimento." primaryAction={{ href: '/contato', label: 'Solicitar apresentação técnica' }} secondaryAction={{ href: '/galanta-ortho', label: 'Conhecer a linha' }} title="Conheça a proposta Galanta Ortho para o seu ponto de atendimento." />
     </>
   )
 }

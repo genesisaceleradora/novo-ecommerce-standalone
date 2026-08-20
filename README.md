@@ -5,14 +5,14 @@ Base profissional mobile first e sem Base44 para Galanta Medical / Galanta Ortho
 ## Stack e escopo atual
 
 - Next.js App Router, TypeScript, Tailwind CSS e ESLint.
-- O design system Clinical Tech Industrial da Galanta Medical já está aplicado; a migração funcional segue organizada em PRs separados.
+- O design system Clinical Tech Industrial e a estrutura institucional da Galanta Medical já estão aplicados; catálogo e fluxos funcionais seguem organizados em PRs separados.
 - Catálogo, personalização, carrinho, checkout e admin legados funcionam somente com dados mockados e não representam a operação Galanta final.
 - SEO, sitemap, robots e tracking são centralizados.
 - Pagar.me, Supabase/Postgres e storage privado possuem apenas fundações arquiteturais; não há cobrança, banco ou upload real.
 
 ## Direção estratégica
 
-A evolução para Galanta Medical / Galanta Ortho está organizada no [Plano Master](docs/20-PLANO-MASTER-GALANTA-MEDICAL.md). Os nomes são finais, as pendências não bloqueantes estão na [matriz de decisões](docs/21-MATRIZ-DE-DECISOES-GALANTA.md) e a fundação visual está pronta para a estrutura institucional da próxima fase.
+A evolução para Galanta Medical / Galanta Ortho está organizada no [Plano Master](docs/20-PLANO-MASTER-GALANTA-MEDICAL.md). Os nomes são finais, as pendências não bloqueantes estão na [matriz de decisões](docs/21-MATRIZ-DE-DECISOES-GALANTA.md) e a fundação institucional está pronta para receber o catálogo profissional da próxima fase.
 
 Documentos centrais:
 
@@ -65,6 +65,10 @@ Copie `.env.example` para `.env.local`. Não envie `.env.local`, chaves ou token
 
 ## Fluxo atual da implementação legada
 
+A navegação pública atual apresenta a Galanta Medical e a linha Galanta Ortho por meio das rotas institucionais `/galanta-ortho`, `/produtos`, `/linha-standard`, `/linha-personal`, `/como-funciona`, `/amostras-tecnicas`, `/profissionais`, `/clinicas-e-hospitais`, `/materiais-tecnicos` e `/regulatorio-e-seguranca`. O conteúdo é estrutural, sem catálogo final, preço, oferta ou claim clínico não aprovado.
+
+As rotas demonstrativas anteriores permanecem acessíveis diretamente apenas para preservar a continuidade técnica enquanto as próximas fases substituem o domínio B2C:
+
 1. O visitante navega por home, categorias e produtos demonstrativos.
 2. Produtos configurados exibem personalização no cliente; arquivos são apenas metadados locais e não são enviados.
 3. O carrinho persiste no `localStorage`, pode ser editado pela gaveta lateral ou em `/carrinho`.
@@ -106,7 +110,7 @@ Para um deploy próprio:
 
 ## Limitações e próximos passos
 
-Este projeto não deve receber solicitações ou pedidos reais ainda. Faltam migração visual/funcional Galanta, produto e materiais aprovados, persistência, autenticação real, conteúdo jurídico, operação comercial e gates regulatórios. Pagar.me e storage continuam inativos. O Docker entrega apenas a aplicação; domínio HTTPS, proxy, secrets, monitoramento e backups ainda precisam de configuração. Consulte [docs/14-PENDENCIAS.md](docs/14-PENDENCIAS.md).
+Este projeto não deve receber solicitações ou pedidos reais ainda. Faltam catálogo Galanta aprovado, fluxo B2B, produto e materiais técnicos aprovados, persistência, autenticação real, conteúdo jurídico, operação comercial e gates regulatórios. Pagar.me e storage continuam inativos. O Docker entrega apenas a aplicação; domínio HTTPS, proxy, secrets, monitoramento e backups ainda precisam de configuração. Consulte [docs/14-PENDENCIAS.md](docs/14-PENDENCIAS.md).
 
 ## Como usar com o Codex
 

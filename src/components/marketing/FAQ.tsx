@@ -1,4 +1,4 @@
-import type { FAQItem } from '@/data/home'
+import type { FAQItem } from '@/types/content'
 
 type FAQProps = { items: readonly FAQItem[] }
 

@@ -1,15 +1,29 @@
 import type { MetadataRoute } from 'next'
-import { categories } from '@/data/categories'
-import { products } from '@/data/products'
 import { siteConfig } from '@/lib/site'
 
+const publicPaths = [
+  '/',
+  '/galanta-ortho',
+  '/produtos',
+  '/linha-standard',
+  '/linha-personal',
+  '/como-funciona',
+  '/amostras-tecnicas',
+  '/profissionais',
+  '/clinicas-e-hospitais',
+  '/materiais-tecnicos',
+  '/regulatorio-e-seguranca',
+  '/sobre',
+  '/faq',
+  '/contato',
+  '/politica-de-privacidade',
+  '/termos-de-uso',
+] as const
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    { url: siteConfig.url, changeFrequency: 'weekly', priority: 1 },
-    { url: `${siteConfig.url}/sobre`, changeFrequency: 'monthly', priority: 0.4 },
-    { url: `${siteConfig.url}/faq`, changeFrequency: 'monthly', priority: 0.4 },
-    { url: `${siteConfig.url}/contato`, changeFrequency: 'monthly', priority: 0.3 },
-    ...categories.filter((category) => category.active).map((category) => ({ url: `${siteConfig.url}/categoria/${category.slug}`, changeFrequency: 'weekly' as const, priority: 0.8 })),
-    ...products.filter((product) => product.active).map((product) => ({ url: `${siteConfig.url}/produto/${product.slug}`, changeFrequency: 'weekly' as const, priority: 0.7 })),
-  ]
+  return publicPaths.map((path) => ({
+    url: new URL(path, siteConfig.url).toString(),
+    changeFrequency: path === '/' ? 'weekly' as const : 'monthly' as const,
+    priority: path === '/' ? 1 : 0.6,
+  }))
 }

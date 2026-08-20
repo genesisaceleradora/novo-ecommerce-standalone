@@ -1,136 +1,143 @@
-# 05 — Produtos e Categorias
+# 05 — Produtos e Categorias Galanta Ortho
 
-## 1. Status atual
-
-```txt
-Produto principal: A definir
-Categorias finais: A definir
-Preços finais: A definir
-```
-
-Enquanto não houver definição, usar dados mockados inspirados em produtos personalizados/premium, sem travar o projeto em um produto específico.
-
-## 2. Categorias provisórias herdadas da estrutura Eternize
-
-Essas categorias podem ser usadas como placeholders:
+## 1. Estado atual
 
 ```txt
-Personalizados
-Pets
-Casais
-Família
-Mães e Bebês
-Religiosos
-Signos
-Lei da Atração
-Datas Especiais
-Corporativo
+Marca: Galanta Medical — final
+Linha: Galanta Ortho — final
+Produto/modelo: a confirmar
+Especificações: a confirmar
+Preço: sob consulta
+Catálogo final: a confirmar
 ```
 
-Se o novo produto não tiver relação com alguma categoria, remover depois.
+Pendências não bloqueiam a arquitetura. O catálogo mockado deve representar estrutura, não oferta.
+
+## 2. Categorias alvo
+
+```txt
+Linha Standard
+Linha Personal
+Amostras Técnicas
+Materiais Técnicos
+```
+
+Futura: acessórios e reposição.
 
 ## 3. Modelo de categoria
 
 ```ts
-export type Category = {
+type Category = {
   id: string
+  lineSlug: string
   name: string
   slug: string
-  eyebrow?: string
   description: string
-  shortDescription?: string
-  heroImage?: string
-  mobileHeroImage?: string
+  professionalAudience: string[]
+  requestTypes: TechnicalRequestType[]
   seoTitle: string
   seoDescription: string
-  active: boolean
+  status: 'placeholder' | 'active' | 'archived'
   order: number
 }
 ```
 
-## 4. Modelo de produto
+## 4. Modelo de produto alvo
 
 ```ts
-export type Product = {
+type Product = {
   id: string
+  lineSlug: string
+  categorySlug: string
   name: string
   slug: string
-  categorySlug: string
-  badge?: string
+  modelCode?: string
+  status: 'placeholder' | 'development' | 'technical_evaluation' | 'commercial'
   shortDescription: string
-  longDescription: string
-  price: number
-  compareAtPrice?: number
-  pixDiscountPercent?: number
-  installmentMax: number
+  intendedPurpose?: ApprovedContent
+  professionalAudience: string[]
+  specifications: TechnicalSpecification[]
+  variations: ProductVariation[]
+  requestTypes: TechnicalRequestType[]
+  documents: TechnicalDocument[]
   images: ProductImage[]
-  personalization: PersonalizationConfig
-  productionTime: string
-  shippingInfo: string
-  whatsIncluded?: string[]
-  benefits?: string[]
-  faq?: FAQItem[]
+  regulatoryNotice: string
+  price?: number
   seoTitle: string
   seoDescription: string
   active: boolean
 }
 ```
 
-## 5. Modelo de imagem
+Preço permanece opcional e não deve aparecer enquanto o produto não estiver comercial.
+
+## 5. Conteúdo aprovado
 
 ```ts
-export type ProductImage = {
+type ApprovedContent = {
+  value: string
+  status: 'confirmed' | 'provisional' | 'pending' | 'restricted'
+  source?: string
+  approvedAt?: string
+  approvedBy?: string
+}
+```
+
+## 6. Imagens
+
+```ts
+type ProductImage = {
   src: string
   alt: string
   width?: number
   height?: number
-  type?: 'gallery' | 'hero' | 'detail' | 'mobile'
+  type?: 'gallery' | 'hero' | 'detail' | 'technical'
+  status: 'placeholder' | 'approved'
 }
 ```
 
-## 6. Modelo de personalização
+Não usar imagens geradas ou de terceiros como se fossem produto/evidência Galanta.
 
-```ts
-export type PersonalizationConfig = {
-  enabled: boolean
-  fields: {
-    name?: boolean
-    phrase?: boolean
-    date?: boolean
-    notes?: boolean
-    imageUpload?: boolean
-    multipleImageUpload?: boolean
-    musicLink?: boolean
-    dedication?: boolean
-  }
-  requiredFields?: string[]
-  instructions?: string
-}
+## 7. Configuração técnica
+
+Variações podem suportar tamanho, lado, modelo e versão. Valores finais só entram após confirmação. Personalização afetiva de nome, frase, data, foto e música será removida deste domínio.
+
+## 8. Produto mockado seguro
+
+```txt
+Produto Galanta Ortho — especificação a confirmar
+Status: Em desenvolvimento
+Linha: Standard ou Personal
+Finalidade: Informação técnica em validação
+Preço: Sob consulta
+CTA: Registrar interesse técnico
 ```
 
-## 7. Página de produto deve exibir
+## 9. Página de produto
 
-- Título.
-- Galeria.
-- Preço.
-- Parcelamento.
-- Pix, se aplicável.
-- CTA comprar.
-- CTA WhatsApp.
-- Campos de personalização, se aplicável.
-- Prazo de produção.
-- Informações de envio.
-- Benefícios.
-- FAQ.
-- Produtos relacionados.
+- linha/status;
+- nome/modelo;
+- aviso de desenvolvimento;
+- resumo aprovado;
+- imagens/placeholder;
+- configuração disponível;
+- CTA técnico;
+- finalidade;
+- especificações;
+- cuidados/protocolo quando aprovados;
+- documentos;
+- aviso regulatório;
+- FAQ;
+- relacionados.
 
-## 8. Produtos mockados
+## 10. Regras
 
-Usar `seed/products.example.json` como base até que os produtos reais sejam definidos.
+- não vender a paciente final;
+- não inventar preço, estoque ou prazo;
+- não exibir avaliações fictícias;
+- não publicar claim ou protocolo pendente;
+- status deve ser visível;
+- campos vazios usam placeholder ou são ocultados;
+- schema acompanha o mesmo nível de aprovação da página.
 
-## 9. Regras importantes
-
-- Não inventar dados de produto final.
-- Não usar imagens definitivas sem confirmação.
-- Não criar preço definitivo.
-- Todo produto mockado deve deixar claro que é exemplo.
+Consultar `18-GALANTA-ORTHO-PRODUCT-TAXONOMY.md` para a modelagem completa.

@@ -1,74 +1,109 @@
-# 13 — Critérios de Aceite
+# 13 — Critérios de Aceite Galanta
 
 ## 1. Geral
 
-- Projeto roda localmente.
-- Build funciona.
-- Layout é responsivo.
-- Header e footer aparecem corretamente.
-- Home carrega sem erros.
-- Não há Base44.
-- Não há dados sensíveis hardcoded.
+- marca/linha corretas;
+- nenhum conteúdo B2C de presentes;
+- nenhum dado sensível hardcoded;
+- nenhum claim ou especificação inventado;
+- pendências identificadas;
+- mobile e desktop funcionais;
+- acessibilidade básica;
+- lint/build passam;
+- Docker passa quando aplicável.
 
-## 2. Home
+## 2. Home e institucional
 
-- Hero aparece em desktop e mobile.
-- Categorias aparecem.
-- Produtos em destaque aparecem.
-- Seção como funciona aparece.
-- FAQ aparece.
-- CTA funciona.
+- posicionamento profissional claro;
+- Standard + Personal apresentados sem claim;
+- público profissional explícito;
+- CTA de solicitação;
+- aviso de desenvolvimento;
+- nenhuma métrica fictícia.
 
-## 3. Categoria
+## 3. Catálogo/produto
 
-- URL `/categoria/[slug]` funciona.
-- Exibe banner, descrição e produtos.
-- Trata categoria inexistente.
+- rotas funcionam e tratam inexistente;
+- status e placeholders claros;
+- configuração só quando disponível;
+- sem preço, parcelamento, avaliação ou estoque fictício;
+- documentos exibem versão/status;
+- aviso regulatório visível;
+- sem Offer quando não há comércio.
 
-## 4. Produto
+## 4. Solicitação
 
-- URL `/produto/[slug]` funciona.
-- Exibe galeria, preço, CTA, informações e FAQ.
-- Personalização aparece somente quando ativada.
+- adicionar/remover/revisar item;
+- tipo e configuração preservados;
+- persistência usa nova chave/versionamento;
+- dados profissionais validados;
+- consentimento explícito;
+- aviso de dados de paciente;
+- confirmação informa que não houve compra/pagamento;
+- nenhuma integração externa obrigatória.
 
-## 5. Carrinho
+## 5. Admin
 
-- Adiciona item.
-- Remove item.
-- Altera quantidade.
-- Mantém estado no localStorage.
-- Exibe subtotal.
+- login mockado seguro;
+- dashboard sem faturamento;
+- lista/detalhe de leads;
+- status B2B;
+- dados fictícios;
+- mudança local claramente indicada;
+- produção sem senha não autentica.
 
-## 6. Checkout
+## 6. Tracking
 
-- Exibe itens do carrinho.
-- Coleta dados do cliente.
-- Coleta endereço.
-- Prepara payload para Pagar.me.
-- Não expõe secret key no client.
+- scripts não duplicados;
+- eventos centralizados/tipados;
+- eventos não falham sem IDs;
+- zero PII;
+- Lead/FormSubmit sem duplicidade;
+- Purchase/InitiateCheckout inativos.
 
-## 7. Pagar.me
+## 7. SEO
 
-- Camada de pagamento isolada.
-- API route server-side.
-- Webhook route criada.
-- Eventos idempotentes previstos.
+- metadata Galanta;
+- canonical correto;
+- sitemap/robots acessíveis;
+- páginas privadas fora do sitemap;
+- indexação bloqueada até gate;
+- Organization/Breadcrumb coerentes;
+- Product apenas com dados aprovados;
+- Offer/ratings ausentes sem dados reais.
 
-## 8. Tracking
+## 8. Compliance e privacidade
 
-- Scripts não duplicados.
-- Eventos centralizados.
-- Purchase não dispara antes de confirmação.
+- checklist editorial aplicado;
+- nenhum uso clínico liberado implicitamente;
+- nenhum protocolo/benefício pendente publicado como real;
+- nenhum dado de paciente solicitado;
+- sem upload real;
+- placeholders não parecem evidência.
 
-## 9. SEO
+## 9. Rotas mínimas alvo
 
-- Metadados existem.
-- Sitemap e robots existem.
-- Product schema preparado.
+```txt
+/
+/galanta-ortho
+/produtos
+/produto/[slug]
+/linha-standard
+/linha-personal
+/como-funciona
+/amostras-tecnicas
+/profissionais
+/clinicas-e-hospitais
+/materiais-tecnicos
+/regulatorio-e-seguranca
+/solicitacao
+/solicitacao/dados
+/solicitacao/confirmacao
+/faq
+/contato
+/admin
+/robots.txt
+/sitemap.xml
+```
 
-## 10. Admin
-
-- Protegido por senha.
-- Lista pedidos.
-- Exibe detalhes.
-- Permite alteração de status no MVP.
+Cada PR valida apenas as rotas já implementadas; o aceite global exige o conjunto completo.

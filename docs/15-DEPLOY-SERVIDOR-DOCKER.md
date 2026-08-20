@@ -211,9 +211,12 @@ Confira os logs e as rotas principais depois de cada atualização:
 ```bash
 docker compose logs --tail=100
 curl -I https://seu-dominio.example.com/
-curl -I https://seu-dominio.example.com/produto/produto-personalizado-exemplo
-curl -I https://seu-dominio.example.com/checkout
+curl -I https://seu-dominio.example.com/admin
+curl -I https://seu-dominio.example.com/robots.txt
+curl -I https://seu-dominio.example.com/sitemap.xml
 ```
+
+Valide também as rotas funcionais da versão implantada conforme `04-ROTAS.md`. Durante a migração Galanta, não trate slugs demonstrativos do ecommerce legado como URLs permanentes de produção.
 
 Em caso de falha, preserve os logs e retorne ao commit conhecido pelo Git antes de reconstruir. Não remova `.env.local` durante esse processo.
 

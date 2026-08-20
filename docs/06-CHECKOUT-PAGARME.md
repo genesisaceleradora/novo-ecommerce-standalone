@@ -1,84 +1,59 @@
-# 06 — Checkout Pagar.me
+# 06 — Pagamento e Pagar.me
 
-## 1. Decisão
+## 1. Decisão atual
 
-O gateway de pagamento será Pagar.me.
-
-## 2. Estratégia recomendada para MVP
-
-Começar com uma arquitetura preparada para Pagar.me, usando checkout com redirecionamento/link de pagamento quando fizer sentido para reduzir complexidade inicial.
-
-A documentação oficial do Pagar.me indica que o Checkout pode funcionar por criação de Link de Pagamento via API, retornando uma URL para redirecionar o comprador ao pagamento.
-
-## 3. Referências oficiais
-
-Consultar antes de implementar:
+Pagar.me continua sendo o gateway previsto caso a operação futura tenha venda online. O MVP Galanta Ortho não possui checkout, cobrança ou compra aberta.
 
 ```txt
-https://docs.pagar.me/
-https://docs.pagar.me/docs/llms
-https://docs.pagar.me/docs/checkout-use
-https://docs.pagar.me/reference/checkout-link
-https://docs.pagar.me/docs/webhooks
+Status: fundação técnica inativa
+Ativação: bloqueada por decisão comercial e regulatória
 ```
 
-Observação: a documentação oficial menciona versão V5. Confirmar sempre a versão correta no momento da implementação.
+## 2. Fluxo atual
 
-## 4. Fluxo do checkout
+O fluxo alvo do MVP é documentado em `19-GALANTA-ORTHO-B2B-FLOW.md`:
 
 ```txt
-Cliente → Carrinho → Checkout interno → Criar pedido local → Criar pagamento/link Pagar.me → Redirecionar/confirmar → Webhook atualiza status → Página de obrigado
+Seleção técnica → Dados profissionais → Confirmação → Qualificação
 ```
 
-## 5. Dados mínimos do checkout
+Nenhum preço, endereço de entrega, pagamento ou transação é necessário nessa etapa.
 
-Cliente:
+## 3. Código legado
+
+Os arquivos atuais de checkout/Pagar.me permanecem apenas como fundação mockada até serem substituídos ou reutilizados conscientemente. Eles não devem ser conectados a credenciais, expostos no fluxo B2B ou tratados como pedido real.
+
+## 4. Gate para avaliar pagamento
+
+Antes de implementar:
+
+- produto/modelo e status aplicável confirmados;
+- venda online autorizada;
+- público comprador definido;
+- preço e política comercial definidos;
+- modalidade B2B/B2C definida;
+- documento e endereço necessários definidos;
+- faturamento, frete e impostos definidos;
+- políticas e termos revisados;
+- responsável operacional definido.
+
+## 5. Estratégia futura
+
+Preferir link/checkout hospedado ou arquitetura equivalente segura conforme documentação oficial vigente. Nunca capturar dados de cartão diretamente sem uma arquitetura formalmente aprovada.
+
+Fluxo possível:
 
 ```txt
-Nome
-E-mail
-Telefone/WhatsApp
-CPF/CNPJ, se exigido pelo gateway
+Oportunidade aprovada
+→ Pedido local validado
+→ Pagamento/link Pagar.me
+→ Redirecionamento
+→ Webhook assinado
+→ Status idempotente
+→ Confirmação
 ```
 
-Endereço:
-
-```txt
-CEP
-Rua
-Número
-Complemento
-Bairro
-Cidade
-Estado
-```
-
-Pedido:
-
-```txt
-Itens
-Quantidade
-Preço unitário
-Subtotal
-Frete
-Desconto
-Total
-Personalizações
-Arquivos enviados
-```
-
-Pagamento:
-
-```txt
-Método
-Status
-Transaction ID
-Charge ID
-Order ID Pagar.me
-Payment link URL, se aplicável
-```
-
-## 6. Variáveis de ambiente
+## 6. Variáveis reservadas
 
 ```env
 PAGARME_API_KEY=
@@ -87,62 +62,19 @@ PAGARME_WEBHOOK_SECRET=
 PAGARME_API_BASE_URL=https://sdx-api.pagar.me/core/v5
 ```
 
-## 7. Arquivos esperados
+Secrets apenas no servidor. Variáveis vazias não podem quebrar lint, build ou fluxo B2B.
 
-```txt
-/src/lib/payments/pagarme.ts
-/src/server/checkout/create-order.ts
-/src/server/checkout/create-pagarme-payment.ts
-/src/server/checkout/handle-pagarme-webhook.ts
-/src/app/api/checkout/create/route.ts
-/src/app/api/checkout/webhook/route.ts
-```
+## 7. Segurança futura
 
-## 8. Webhooks
+- consultar documentação oficial atual antes de implementar;
+- validar assinatura/origem de webhook;
+- idempotência por evento e pedido;
+- nunca armazenar dados de cartão;
+- não logar payloads sensíveis;
+- recalcular valores no servidor;
+- associar pagamento apenas a oportunidade/pedido autorizado;
+- `Purchase` somente após confirmação real.
 
-O Pagar.me envia webhooks/notificações por HTTP POST quando eventos acontecem, como atualizações de cobranças, pedidos ou assinaturas.
+## 8. Aceite futuro
 
-A aplicação deve:
-
-- Receber o webhook.
-- Validar origem/assinatura conforme documentação oficial.
-- Registrar o payload bruto com segurança.
-- Atualizar status do pedido.
-- Evitar duplicidade por idempotência.
-
-## 9. Status internos
-
-Mapear status externos do Pagar.me para status internos:
-
-```txt
-Pagamento pendente
-Pagamento aprovado
-Pagamento recusado
-Pedido cancelado
-Pedido reembolsado
-```
-
-## 10. Idempotência
-
-Toda atualização de pagamento deve ser idempotente.
-
-Nunca criar pedido duplicado por múltiplos webhooks.
-
-## 11. Segurança
-
-- Secret key apenas no servidor.
-- Não gravar dados de cartão em banco.
-- Não expor payloads com dados sensíveis no client.
-- Validar webhooks.
-- Não logar dados sensíveis.
-
-## 12. Aceite da integração
-
-A integração estará pronta quando:
-
-- Pedido local é criado.
-- Pagamento/link Pagar.me é gerado.
-- Cliente consegue avançar no fluxo.
-- Webhook atualiza status.
-- Pedido aparece no admin.
-- Purchase só dispara quando pagamento for confirmado.
+A integração só estará pronta quando pedido real, pagamento seguro, webhook, persistência, reconciliação, admin, erros, cancelamento/reembolso e tracking tiverem testes e aprovação operacional.

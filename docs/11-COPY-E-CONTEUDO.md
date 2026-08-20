@@ -1,106 +1,112 @@
-# 11 — Copy e Conteúdo
+# 11 — Copy e Conteúdo Galanta
 
 ## 1. Tom de voz
 
-Usar linguagem:
-
-- Emocional.
-- Comercial.
-- Premium.
-- Clara.
-- Humana.
-- Direta.
-- Focada em presente, memória, transformação e significado.
-
-## 2. Promessas provisórias
-
-Até o produto ser definido, usar frases genéricas:
-
 ```txt
-Um presente criado para emocionar.
-Transforme momentos em memórias que ficam.
-Feito para quem quer presentear com significado.
-Design, cuidado e presença em cada detalhe.
+Profissional
+Clínico sem ser genérico
+Técnico com clareza
+Industrial e confiável
+Direto
+Transparente sobre pendências
 ```
 
-## 3. Estrutura de copy para hero
+Não usar linguagem emocional de presente, urgência artificial ou compra impulsiva.
+
+## 2. Mensagens centrais
+
+Institucional:
+
+> Tecnologia, engenharia e manufatura digital aplicada à rotina clínica.
+
+Frase proposta, sujeita a aprovação:
+
+> Pronta quando o paciente precisa. Personalizada quando o caso exige.
+
+Descrição:
+
+> Galanta Ortho é a linha inicial da Galanta Medical para desenvolvimento de soluções Standard e Personal voltadas a profissionais e pontos de atendimento.
+
+## 3. Hero recomendado
 
 ```txt
-Eyebrow: Coleção / Categoria
-Headline: promessa emocional forte
-Subheadline: explicação objetiva do produto/benefício
-CTA primário: Ver produtos
-CTA secundário: Como funciona
+Eyebrow: Galanta Medical / Portal profissional
+Headline: Órteses 3D para a rotina clínica moderna.
+Subheadline: Estrutura Standard + Personal desenvolvida com engenharia e manufatura digital para profissionais, clínicas e hospitais.
+CTA primário: Solicitar apresentação técnica
+CTA secundário: Conhecer Galanta Ortho
+Aviso: Conteúdo e especificações em desenvolvimento
 ```
 
-## 4. Exemplos genéricos de headline
+Não afirmar benefício do produto no hero enquanto a ficha estiver pendente.
+
+## 4. Standard + Personal
 
 ```txt
-Um presente que transforma histórias em presença.
-O detalhe que emociona antes mesmo de abrir.
-Para momentos que merecem durar mais.
-Mais que um produto. Uma lembrança com significado.
+Linha Standard
+Estrutura de produtos padronizados planejada para disponibilidade, configuração e reposição em pontos de atendimento. Especificações a confirmar.
+
+Linha Personal
+Estrutura para soluções personalizadas em casos selecionados, condicionada a informações e avaliação profissional. Processo e critérios a confirmar.
 ```
 
-## 5. Bloco “Como funciona”
+## 5. Como funciona
 
-Modelo herdado da Eternize:
+Pode apresentar conceitualmente:
 
 ```txt
-1. Escolha o produto
-Selecione o modelo ideal para o momento que você quer eternizar.
-
-2. Personalize
-Envie nome, frase, foto ou detalhes, quando o produto permitir personalização.
-
-3. Finalize a compra
-Revise as informações e conclua o pagamento com segurança.
-
-4. Receba em casa
-Produzimos com cuidado e enviamos para todo o Brasil.
+Selecionar
+Preparar conforme protocolo aprovado
+Adaptar por profissional
+Verificar conforme orientação aplicável
 ```
 
-## 6. Benefícios provisórios
+Não publicar temperatura, tempo, indicação ou instrução clínica até aprovação.
+
+## 6. CTA B2B
 
 ```txt
-Presente personalizado
-Produção cuidadosa
-Feito no Brasil
-Acabamento premium
-Envio para todo o Brasil
-Atendimento humanizado
-Compra segura
+Conheça a proposta Galanta Ortho para o seu ponto de atendimento.
+Registre seu interesse em uma apresentação, avaliação de amostra ou planejamento de estoque.
 ```
 
-## 7. FAQ provisório
-
-### Os produtos são personalizados?
-
-Alguns produtos podem permitir personalização. Essa informação aparecerá na página de cada produto.
-
-### Qual o prazo de produção?
-
-Usar placeholder herdado da Eternize: produção média em até 3 dias úteis. Revisar antes de publicar.
-
-### Enviam para todo o Brasil?
-
-Sim, a estrutura deve estar preparada para envio nacional.
-
-### Posso comprar para presente?
-
-Sim. A comunicação deve reforçar o produto como opção de presente com significado.
-
-### Como funciona o pagamento?
-
-O checkout será integrado ao Pagar.me.
-
-## 8. Prova social provisória
-
-Usar dados herdados apenas como placeholder:
+## 7. Placeholders
 
 ```txt
-4.9/5 Avaliação média
-+20.000 histórias iluminadas/produtos entregues
+Produto/modelo: A confirmar
+Finalidade: Informação técnica em validação
+Material: A confirmar
+Configuração: A confirmar
+Preço: Sob consulta
+Status: Em desenvolvimento
 ```
 
-Antes de publicar, confirmar se esses dados podem ser usados no novo projeto.
+## 8. FAQ inicial
+
+### Para quem é a plataforma?
+
+Para profissionais de saúde, clínicas, hospitais e equipes envolvidas na avaliação técnica e comercial da linha Galanta Ortho.
+
+### Já é possível comprar?
+
+Não. O MVP registra interesse técnico e comercial. Condições e disponibilidade serão definidas pela equipe Galanta.
+
+### Posso enviar dados de um paciente?
+
+Não. Não inclua dados, imagens, documentos ou informações identificáveis de pacientes.
+
+### As especificações estão finalizadas?
+
+Campos pendentes são identificados como em validação e serão atualizados após aprovação.
+
+### Como solicitar contato?
+
+Use o fluxo de solicitação profissional e selecione o tipo de interesse adequado.
+
+## 9. Prova e números
+
+Não publicar avaliações, clientes, entregas, produção, desempenho ou estatísticas sem fonte verificável e autorização. Prova social só entra com dados reais e consentimento.
+
+## 10. Revisão
+
+Toda copy passa pelo checklist de `17-GALANTA-ORTHO-COMPLIANCE-COPY.md`. Conteúdo técnico também exige responsável, fonte, versão e aprovação.

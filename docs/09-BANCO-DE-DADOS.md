@@ -1,157 +1,153 @@
-# 09 — Banco de Dados
+# 09 — Banco de Dados B2B
 
-## 1. Banco sugerido
+## 1. Status
 
-Supabase/PostgreSQL.
+Supabase/PostgreSQL continua como direção futura. O MVP documental e visual não depende de banco. `database/schema.sql` representa a fundação ecommerce anterior e não deve ser aplicado em produção sem migração para o domínio B2B.
 
-## 2. Tabelas principais
+## 2. Domínios futuros
 
 ```txt
+catalog
+organizations
+professionals
+technical_requests
+consents
+activities
+technical_documents
+samples/shipments
+admin/auth
+orders/payments (somente se autorizados)
+```
+
+## 3. Tabelas planejadas
+
+```txt
+product_lines
 categories
 products
-product_images
-customers
+product_variations
+technical_documents
+organizations
+professional_contacts
+technical_requests
+technical_request_items
+technical_request_events
+consents
+sample_shipments
+admin_users
+audit_logs
+```
+
+Tabelas futuras condicionais:
+
+```txt
 orders
 order_items
-personalization_files
 payment_transactions
-coupons
-shipping_methods
-admin_users
 webhook_events
 ```
 
-## 3. categories
+## 4. Organizações e profissionais
 
-```sql
-id uuid primary key
-name text not null
-slug text unique not null
-description text
-hero_image text
-mobile_hero_image text
-seo_title text
-seo_description text
-active boolean default true
-sort_order integer default 0
-created_at timestamptz default now()
-updated_at timestamptz default now()
+`organizations` representa clínica, hospital ou empresa. `professional_contacts` representa o contato profissional e pode possuir profissão e registro quando fornecidos.
+
+Regras:
+
+- CNPJ opcional na captação inicial;
+- e-mail/telefone protegidos;
+- registro profissional não vai para analytics;
+- deduplicação e consentimento precisam de estratégia;
+- não criar tabela de paciente no MVP.
+
+## 5. Solicitação técnica
+
+Campos conceituais:
+
+```txt
+id
+organization_id
+professional_contact_id
+request_type
+status
+profile
+estimated_volume
+notes
+utm_*
+consent_id
+created_at
+updated_at
 ```
 
-## 4. products
+Notas não devem aceitar dados de pacientes; limites e sanitização são obrigatórios.
 
-```sql
-id uuid primary key
-category_id uuid references categories(id)
-name text not null
-slug text unique not null
-short_description text
-long_description text
-price integer not null -- centavos
-compare_at_price integer
-pix_discount_percent integer
-installment_max integer default 6
-production_time text
-shipping_info text
-personalization_enabled boolean default false
-active boolean default true
-seo_title text
-seo_description text
-created_at timestamptz default now()
-updated_at timestamptz default now()
+## 6. Itens
+
+```txt
+id
+technical_request_id
+product_id
+product_name_snapshot
+request_type
+quantity_estimate
+variation jsonb
+created_at
 ```
 
-## 5. orders
+Snapshot preserva contexto sem transformar a solicitação em pedido/preço.
 
-```sql
-id uuid primary key
-customer_id uuid references customers(id)
-status text not null
-payment_status text not null
-total integer not null
-subtotal integer not null
-shipping_total integer default 0
-discount_total integer default 0
-currency text default 'BRL'
-utm_source text
-utm_medium text
-utm_campaign text
-utm_content text
-utm_term text
-pagarme_order_id text
-pagarme_payment_link text
-tracking_code text
-created_at timestamptz default now()
-updated_at timestamptz default now()
+## 7. Status
+
+```txt
+new_lead
+awaiting_qualification
+presentation_scheduled
+samples_selected
+samples_sent
+professional_evaluation
+proposal_sent
+stock_planning
+partnership_approved
+lost
 ```
 
-## 6. customers
+Histórico fica em `technical_request_events`, nunca sobrescrito sem auditoria.
 
-```sql
-id uuid primary key
-name text not null
-email text
-phone text
-document text
-created_at timestamptz default now()
-```
+## 8. Consentimentos
 
-## 7. order_items
+Registrar:
 
-```sql
-id uuid primary key
-order_id uuid references orders(id)
-product_id uuid references products(id)
-product_name text not null
-quantity integer not null
-unit_price integer not null
-total integer not null
-customization jsonb
-created_at timestamptz default now()
-```
+- finalidade;
+- versão do texto;
+- data/hora;
+- origem;
+- status/revogação;
+- retenção aplicável.
 
-## 8. personalization_files
+Não armazenar consentimento como boolean isolado sem versão.
 
-```sql
-id uuid primary key
-order_id uuid references orders(id)
-order_item_id uuid references order_items(id)
-file_name text not null
-storage_path text not null
-mime_type text
-size_bytes integer
-created_at timestamptz default now()
-```
+## 9. Documentos e storage
 
-## 9. payment_transactions
+`technical_documents` registra produto, tipo, versão, status e visibilidade. Arquivos restritos usam storage privado e acesso auditável.
 
-```sql
-id uuid primary key
-order_id uuid references orders(id)
-gateway text default 'pagarme'
-gateway_order_id text
-gateway_charge_id text
-gateway_transaction_id text
-status text
-amount integer
-payload jsonb
-created_at timestamptz default now()
-updated_at timestamptz default now()
-```
+## 10. Segurança/LGPD
 
-## 10. webhook_events
+- RLS/políticas por papel;
+- service role somente server-side;
+- criptografia/segurança do provedor;
+- mínimo privilégio;
+- logs sem PII;
+- retenção, exportação e exclusão;
+- backup e restauração testados;
+- dados fictícios até aprovação de produção.
 
-```sql
-id uuid primary key
-gateway text default 'pagarme'
-event_id text unique
-order_id uuid references orders(id)
-event_type text
-payload jsonb
-processed boolean default false
-created_at timestamptz default now()
-```
+## 11. Migração futura
 
-## 11. Observações
+Antes de alterar `database/schema.sql`:
 
-No MVP, não é obrigatório implementar todas as tabelas imediatamente. A modelagem serve como direção para não criar estrutura quebrada.
+1. aprovar o modelo B2B;
+2. mapear tabelas legadas;
+3. criar migração versionada, sem editar produção manualmente;
+4. atualizar tipos TypeScript;
+5. manter mocks como adapters;
+6. testar rollback e dados fictícios;
+7. só então conectar API/admin.

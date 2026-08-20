@@ -1,53 +1,61 @@
-# 08 — Tracking e SEO
+# 08 — Tracking e SEO B2B
 
 ## 1. Objetivo
 
-O ecommerce deve nascer preparado para tráfego pago, mensuração, SEO e remarketing, evitando duplicidade de pixels e scripts.
+Mensurar descoberta, interesse e envio de solicitações profissionais, construindo autoridade sem duplicidade de scripts, PII ou sinais falsos de ecommerce.
 
 ## 2. Tracking centralizado
 
-Criar arquivos:
+Manter providers e adaptadores em `/src/lib/tracking` e um único ponto de carregamento. Componentes chamam funções tipadas; não inserem pixels manualmente.
 
-```txt
-/src/lib/tracking/meta.ts
-/src/lib/tracking/ga4.ts
-/src/lib/tracking/gtm.ts
-/src/lib/tracking/utm.ts
-/src/components/TrackingProvider.tsx
-```
-
-## 3. Eventos obrigatórios
+## 3. Eventos do MVP
 
 ```txt
 PageView
 ViewContent
+Lead
+Contact
+FormStart
+FormSubmit
+TechnicalPresentationRequested
+TechnicalSampleRequested
+StockPlanningRequested
+PersonalProjectRequested
+ProfessionalMaterialDownloaded
+```
+
+`Search` pode entrar quando busca real existir.
+
+## 4. Eventos inativos
+
+```txt
 AddToCart
 InitiateCheckout
 Purchase
-Lead WhatsApp
-Search
-UploadStarted
-UploadCompleted
 ```
 
-## 4. Regras do Meta Pixel
+O código legado pode permanecer temporariamente, mas não deve disparar no novo fluxo. `Purchase` só retorna com pagamento real confirmado.
 
-- Carregar apenas uma vez.
-- Não duplicar scripts.
-- Disparar eventos por função centralizada.
-- `Purchase` apenas após pagamento confirmado.
-- Passar value e currency quando aplicável.
+## 5. Payload permitido
 
-## 5. Regras GA4/GTM
+- IDs internos não sensíveis;
+- slug/status da página;
+- linha/categoria;
+- tipo de solicitação;
+- quantidade de itens;
+- UTMs.
 
-- Preparar envio de eventos equivalentes.
-- Capturar UTMs.
-- Preservar UTMs no checkout.
-- Associar pedido com origem da campanha.
+Proibido:
 
-## 6. UTM
+- nome, e-mail, telefone, documento ou registro;
+- instituição identificável quando desnecessária;
+- observações;
+- informação clínica;
+- nome/arquivo de paciente.
 
-Capturar e persistir:
+## 6. UTMs
+
+Persistir separadamente:
 
 ```txt
 utm_source
@@ -59,65 +67,62 @@ fbclid
 gclid
 ```
 
+Aplicar expiração e não misturar com payload público/logs.
+
 ## 7. SEO técnico
 
-Obrigatório:
+- title e description únicos;
+- canonical via `NEXT_PUBLIC_SITE_URL`;
+- Open Graph;
+- sitemap;
+- robots;
+- alt text factual;
+- URLs em português;
+- performance mobile;
+- noindex em admin, APIs, formulário e confirmação quando aplicável.
 
-- Title.
-- Meta description.
-- Canonical.
-- Open Graph.
-- Twitter Card.
-- Robots.txt.
-- Sitemap.xml.
-- Schema Product.
-- Schema Organization.
-- Schema Breadcrumb.
+## 8. JSON-LD
 
-## 8. Canonical local
+Permitidos:
 
-Enquanto não houver domínio definitivo:
+- Organization;
+- BreadcrumbList;
+- Product somente quando os dados representarem produto real e aprovado.
 
-```txt
-http://localhost:3000
-```
+Condicionados:
 
-## 9. URLs
+- Offer exige preço/oferta reais;
+- AggregateRating exige avaliações reais;
+- MedicalDevice ou tipos relacionados exigem revisão de adequação antes do uso.
 
-- Slugs em português sem acentos.
-- URLs curtas.
-- Não usar query para páginas indexáveis.
+## 9. Conteúdo de autoridade
 
-## 10. Schema de produto
-
-Quando produtos reais existirem, adicionar:
+Páginas planejadas:
 
 ```txt
-name
-description
-image
-offers.price
-offers.priceCurrency = BRL
-availability
-brand
-aggregateRating, somente se houver dados reais
+/galanta-ortho
+/linha-standard
+/linha-personal
+/como-funciona
+/profissionais
+/clinicas-e-hospitais
+/materiais-tecnicos
+/regulatorio-e-seguranca
 ```
 
-## 11. Conteúdo SEO
+Keywords não autorizam claims. Conteúdo deve passar por `17-GALANTA-ORTHO-COMPLIANCE-COPY.md`.
 
-Cada categoria deve ter:
+## 10. Robots e lançamento
 
-- H1 único.
-- Texto introdutório.
-- Produtos.
-- FAQ.
-- Meta title.
-- Meta description.
+Enquanto domínio, conteúdo, catálogo, páginas legais e compliance não estiverem aprovados, bloquear indexação. A liberação é um gate explícito, não consequência automática de configurar domínio.
 
-## 12. Performance
+## 11. Aceite
 
-- Imagens otimizadas.
-- Lazy loading.
-- Menos JS possível.
-- Mobile first.
-- Lighthouse como referência.
+- scripts carregam uma vez;
+- eventos não falham sem IDs;
+- eventos de lead disparam uma vez;
+- zero PII no payload;
+- UTMs são preservadas;
+- sitemap contém somente páginas aprovadas;
+- Offer/Purchase permanecem ausentes;
+- metadata usa Galanta Medical e status real do conteúdo.

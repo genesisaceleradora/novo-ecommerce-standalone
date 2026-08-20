@@ -1,152 +1,149 @@
-# 02 — Design System Provisório
+# 02 — Design System Galanta Medical
 
-## 1. Referência visual
+## 1. Direção
 
-Usar como referência provisória o padrão premium/emocional da Eternize.
+Conceito: **Clinical Tech Industrial**.
 
-Sensações desejadas:
+O sistema deve parecer médico, tecnológico, industrial, premium e confiável. A antiga estética emocional da Eternize está descontinuada.
 
-- Sofisticação.
-- Presenteável.
-- Acolhimento.
-- Memória.
-- Exclusividade.
-- Produto com significado.
-- Confiança.
-
-## 2. Paleta provisória
+## 2. Paleta
 
 ```txt
-Azul profundo: #14213D
-Azul noite: #0E1930
-Preto elegante: #050505
-Marfim: #F6F1E8
-Branco quente: #FFF8EA
-Dourado suave: #D6B36A
-Dourado escuro: #A9833D
-Rosa queimado: #A26769
-Cinza texto: #667085
-Cinza borda: #E6E0D6
+Galanta Black:    #050A0D
+Graphite Medical: #0B1117
+Deep Slate:       #111827
+Medical Cyan:     #00B8C7
+Clinical Aqua:    #2EE6F0
+Sterile White:    #F7FAFC
+Mist Gray:        #D8E1E8
+Steel Gray:       #7A8A99
+Signal Green:     #21C47B
+Alert Amber:      #F2B84B
+Clinical Red:     #E05252
 ```
 
-## 3. Tipografia provisória
+Hero, header e blocos institucionais podem ser escuros. Leitura longa, fichas e formulários devem priorizar fundo claro. Estados nunca dependem apenas da cor.
+
+## 3. Tipografia
 
 ```txt
-Títulos: Cormorant Garamond
-Subtítulos especiais: Cormorant Garamond Italic
-Textos: Inter
-Botões: Inter Semibold
+Títulos: Sora
+Texto e UI: Inter
+Labels/dados técnicos: IBM Plex Mono
 ```
 
-## 4. Estilo dos títulos
+Carregar fontes de forma centralizada com `next/font` quando possível.
 
-- Grandes.
-- Editorial.
-- Elegantes.
-- Espaçamento confortável.
-- Alta legibilidade.
-
-Exemplo:
+## 4. Layout
 
 ```txt
-Um presente criado para transformar momentos em memória.
+Container: 1200–1280px
+Padding mobile: 20px
+Padding desktop: 32–48px
+Seções mobile: 48–72px
+Seções desktop: 72–120px
 ```
+
+Usar grid técnico, linhas finas e ritmo previsível. Evitar excesso de glow, animação ou ornamento futurista.
 
 ## 5. Botões
 
-### Botão primário
+Variantes:
 
-```txt
-Fundo: dourado suave
-Texto: preto/azul escuro
-Borda: nenhuma
-Raio: 999px
-Peso: 600/700
-Altura mobile: 48px mínimo
-```
+- primary: ciano, alta ênfase;
+- secondary: outline;
+- ghost: baixa ênfase;
+- warning/destructive somente em contexto administrativo.
 
-### Botão secundário
+Regras:
 
-```txt
-Fundo: transparente
-Texto: branco quente ou azul profundo, dependendo do fundo
-Borda: 1px com transparência
-Raio: 999px
-```
+- mínimo 44px de altura; 48px preferencial em mobile;
+- foco visível;
+- loading e disabled distinguíveis;
+- CTA usa solicitar, conhecer, avaliar ou planejar;
+- não usar “comprar” no MVP B2B.
 
 ## 6. Cards
 
-Cards de produtos:
+### Produto
 
-- Borda suave.
-- Sombra leve.
-- Imagem grande.
-- Título claro.
-- Preço visível.
-- CTA rápido.
-- Badge opcional: “Mais vendido”, “Novo”, “Presente ideal”.
+- linha e status;
+- nome/modelo;
+- resumo;
+- configuração quando confirmada;
+- CTA técnico;
+- sem preço, desconto, avaliação ou estoque fictício.
 
-## 7. Banners
+### Benefício/capacidade
 
-Desktop:
+Comunicar processo ou capacidade, não resultado clínico.
 
-```txt
-Proporção sugerida: 2048x720 ou similar
-Imagem ampla
-Texto protegido em área segura
-CTA visível
-```
+### Aviso
 
-Mobile:
+Separar informação pendente, restrita e aprovada com ícone, rótulo e texto.
+
+## 7. Badges
 
 ```txt
-Proporção sugerida: 1024x1536
-Texto na parte superior ou central
-Produto abaixo
-Margem segura grande no topo e nas laterais
+STANDARD
+PERSONAL
+AMOSTRA TÉCNICA
+EM DESENVOLVIMENTO
+ESPECIFICAÇÃO A CONFIRMAR
+INFORMAÇÃO EM VALIDAÇÃO
 ```
 
-## 8. Espaçamento
+Badges regulatórios só podem refletir estado aprovado.
 
-```txt
-Container desktop: max-width 1200px a 1280px
-Padding desktop: 32px a 48px
-Padding mobile: 20px
-Seções: 72px a 120px desktop; 48px a 72px mobile
-```
+## 8. Tabelas e especificações
 
-## 9. Header
+- `scope="col"`/`scope="row"`;
+- responsividade sem scroll oculto;
+- labels em IBM Plex Mono;
+- valor pendente explícito;
+- documentos exibem versão e status.
 
-- Fixo ou sticky se não prejudicar performance.
-- Logo à esquerda.
-- Menu central.
-- Busca/carrinho à direita.
-- Mobile com menu hambúrguer.
+## 9. Header e topbar
+
+Header deve destacar Galanta Medical, Galanta Ortho, soluções, públicos, materiais e contato. Topbar não usa métricas, avaliações, parcelamento ou prazo fictício; pode mostrar “Portal profissional” e “Informações técnicas em desenvolvimento”.
 
 ## 10. Footer
 
-Deve conter:
+- arquitetura de marca;
+- navegação profissional;
+- materiais e compliance;
+- contato;
+- políticas;
+- aviso de conteúdo em desenvolvimento.
 
-- Logo.
-- Breve descrição.
-- Categorias.
-- Atendimento.
-- Políticas.
-- Formas de pagamento.
-- Redes sociais.
-- Informação de indústria/fabricação, se aplicável.
+## 11. Formulários
 
-## 11. Regras mobile
+- label visível;
+- descrição e erro associados por `aria-describedby`;
+- campos condicionais só quando necessários;
+- aviso para não inserir dados de pacientes;
+- consentimento não pré-marcado;
+- mensagens de sucesso sem prometer prazo.
 
-- Texto legível sem zoom.
-- Botões com toque confortável.
-- CTA no primeiro scroll.
-- Imagens otimizadas.
-- Evitar blocos muito pesados.
-- Header simples.
-- Carrinho fácil de abrir.
+## 12. Imagens
 
-## 12. Componentes obrigatórios
+- placeholders claramente identificados;
+- nenhum paciente/profissional usado como prova;
+- alt text factual;
+- `next/image` e tamanhos responsivos;
+- origem/licença/aprovação registradas para ativos finais.
+
+## 13. Mobile e acessibilidade
+
+- mobile first;
+- foco visível e navegação por teclado;
+- contraste WCAG AA;
+- conteúdo sem depender de hover;
+- suporte a `prefers-reduced-motion`;
+- drawers com foco, Escape e rótulo acessível;
+- toque confortável e texto sem zoom.
+
+## 14. Componentes base
 
 ```txt
 Topbar
@@ -156,13 +153,17 @@ HeroBanner
 Button
 Container
 SectionTitle
+Badge
+Card
 ProductCard
 CategoryCard
-BenefitCard
-ReviewCard
+CapabilityCard
+TechnicalTable
+ComplianceNotice
 FAQ
-CartDrawer
-ProductGallery
-PersonalizationForm
-CheckoutSummary
+TechnicalRequestDrawer
+TechnicalRequestSummary
+ProfessionalForm
 ```
+
+Componentes legados podem ser refatorados; evitar duplicação apenas para mudar o nome visual.

@@ -1,208 +1,142 @@
-# 01 — PRD do Novo Ecommerce Standalone
+# 01 — PRD Galanta Medical / Galanta Ortho
 
 ## 1. Resumo
 
-Criar um ecommerce standalone, sem Base44, usando Next.js, TypeScript e Tailwind, com arquitetura escalável para categorias, produtos, personalização, carrinho, checkout Pagar.me, tracking, SEO e painel administrativo simples.
+Construir um portal profissional standalone para Galanta Medical, com Galanta Ortho como linha inicial. O MVP deve apresentar a marca e a arquitetura Standard + Personal, organizar um catálogo técnico configurável e converter interesse em solicitações B2B qualificadas.
 
-## 2. Objetivo principal
+## 2. Objetivo
 
-Construir uma base de ecommerce que possa ser replicada para marcas, produtos personalizados, presentes, produtos 3D, colecionáveis, nichos sazonais ou produtos físicos premium.
+Permitir que profissionais, clínicas e hospitais:
 
-## 3. Regras fixas
+1. entendam a proposta da Galanta;
+2. conheçam linhas e produtos em desenvolvimento;
+3. consultem conteúdo aprovado;
+4. selecionem um interesse técnico;
+5. enviem uma solicitação profissional;
+6. recebam confirmação sem pagamento;
+7. sejam acompanhados em um pipeline administrativo mockado.
+
+## 3. Decisões fixas
 
 ```txt
-Nome do projeto: A definir
-Produto principal: A definir
+Marca: Galanta Medical
+Linha inicial: Galanta Ortho
+Público: profissional/B2B/B2B2C
+Categoria: órteses e imobilizadores 3D
+Conversão do MVP: solicitação técnica
+Venda aberta: não implementar
+Pagamento real: não implementar
+Banco/storage real: não implementar nesta fase
+Deploy: Docker em servidor próprio
 Domínio local: http://localhost:3000
-Gateway: Pagar.me
-Base44: Proibido
-Checkout: Preparar arquitetura para Pagar.me
+Base44: proibido
 ```
 
-## 4. Público inicial provisório
+## 4. Pendências não bloqueantes
 
-Como o produto ainda não foi definido, considerar como público provisório:
+Produto/modelo, finalidade, material, tamanhos, lados, protocolos, situação regulatória, preço, imagens e regras comerciais podem permanecer como placeholders seguros conforme `21-MATRIZ-DE-DECISOES-GALANTA.md`.
 
-- Pessoas buscando presentes personalizados.
-- Pessoas buscando presentes criativos.
-- Clientes que compram pela emoção.
-- Pessoas que valorizam estética premium.
-- Clientes de ecommerce via Meta Ads, Google e Instagram.
-- Compradores para datas especiais.
-- Compradores para presente de família, casal, pet, religião, signos, prosperidade ou outros nichos, se esses nichos forem mantidos.
+## 5. Públicos prioritários
 
-## 5. Promessa provisória
+- ortopedistas;
+- fisioterapeutas;
+- terapeutas ocupacionais;
+- clínicas;
+- hospitais;
+- gestores/compradores de pontos de atendimento.
+
+## 6. Escopo do MVP B2B
+
+- home Galanta Medical;
+- página Galanta Ortho;
+- linhas Standard e Personal;
+- catálogo e produto configuráveis;
+- páginas por público;
+- página “como funciona” sem parâmetros não aprovados;
+- solicitação técnica persistida localmente;
+- formulário profissional mockado;
+- confirmação de solicitação;
+- materiais técnicos estruturais;
+- página regulatória estrutural;
+- FAQ e contato;
+- admin mockado de leads;
+- SEO e tracking de lead centralizados;
+- Docker e documentação operacional.
+
+## 7. Fora do escopo atual
+
+- venda direta;
+- Pagar.me real;
+- cálculo de preço, desconto, frete ou parcelamento;
+- Supabase/Postgres real;
+- upload real;
+- dados clínicos/pacientes;
+- autenticação robusta;
+- CRM completo;
+- publicação de instruções ou claims não aprovados;
+- indexação pública antes do gate de lançamento.
+
+## 8. Jornada principal
 
 ```txt
-Produtos personalizados criados para transformar momentos em presentes memoráveis.
+Home/SEO
+→ Linha ou conteúdo
+→ Categoria/produto
+→ Registrar interesse
+→ Revisar seleção
+→ Dados profissionais
+→ Confirmação
+→ Qualificação mockada no admin
 ```
 
-Essa promessa deve ser substituída quando o produto final for definido.
+## 9. Home
 
-## 6. Estrutura do MVP
+1. Aviso profissional/topbar sem métricas fictícias.
+2. Header Galanta Medical.
+3. Hero institucional.
+4. Galanta Ortho.
+5. Standard + Personal.
+6. Fluxo conceitual de adaptação.
+7. Públicos atendidos.
+8. Engenharia/manufatura digital.
+9. Processo de solicitação técnica.
+10. Compliance provisório.
+11. FAQ.
+12. CTA final e footer.
 
-O MVP deve conter:
+## 10. Conversão
 
-- Home completa.
-- Listagem de categorias.
-- Página de categoria.
-- Página de produto.
-- Carrinho lateral.
-- Checkout inicial.
-- Página de obrigado.
-- Formulário de personalização ativável por produto.
-- Páginas institucionais.
-- SEO básico.
-- Tracking centralizado.
-- Painel administrativo simples.
+- CTA no primeiro scroll;
+- rótulos objetivos;
+- formulário progressivo e curto;
+- nenhum endereço antes da necessidade de envio;
+- CNPJ e volume opcionais inicialmente;
+- aviso para não inserir dados de pacientes;
+- confirmação clara de que não houve compra/pagamento.
 
-## 7. Páginas obrigatórias
+## 11. Produto
 
-```txt
-/
-/categoria/[slug]
-/produto/[slug]
-/carrinho
-/checkout
-/obrigado
-/sobre
-/faq
-/contato
-/politica-de-privacidade
-/politica-de-troca
-/termos-de-uso
-/admin
-```
+A página deve funcionar mesmo com campos pendentes. Ela organiza status, linha, resumo, configuração, finalidade, especificações, documentos, avisos, FAQ e CTA de solicitação. Preço e `Offer` só existirão com comércio real.
 
-## 8. Estrutura da Home
+## 12. SEO
 
-A home deve ter:
+- metadata por rota;
+- canonical via `NEXT_PUBLIC_SITE_URL`;
+- Open Graph;
+- sitemap e robots;
+- Organization e Breadcrumb;
+- Product somente com dados aprovados;
+- sem Offer ou avaliação fictícia;
+- indexação bloqueada até aprovação.
 
-1. Topbar de benefícios.
-2. Header.
-3. Hero principal.
-4. Categorias principais.
-5. Produtos em destaque.
-6. Como funciona.
-7. Benefícios.
-8. Prova social.
-9. Sobre a marca.
-10. FAQ.
-11. CTA final.
-12. Footer.
+## 13. Tracking
 
-## 9. Topbar provisória
+Centralizar PageView, ViewContent, Lead, Contact, FormStart, FormSubmit e eventos de solicitação. Não disparar Purchase ou enviar PII.
 
-Usar os dados herdados da Eternize como placeholders até revisão:
+## 14. Admin
 
-```txt
-4.9/5 — Avaliação média
-+20.000 — Histórias iluminadas/produtos entregues
-3 dias úteis — Produção média
-100% — Feito no Brasil
-6x — Sem juros
-```
+Login mockado por senha de ambiente, lista de leads, detalhe, seleção técnica, UTMs, consentimentos, histórico e mudança local de status. Sem faturamento demonstrativo.
 
-Observação: esses dados devem ser marcados como provisórios no código/data layer e revisados antes de produção.
+## 15. Critério de sucesso
 
-## 10. Fluxo de compra
-
-1. Cliente acessa a home ou categoria.
-2. Cliente escolhe um produto.
-3. Cliente personaliza, se aplicável.
-4. Cliente adiciona ao carrinho.
-5. Cliente revisa carrinho.
-6. Cliente inicia checkout.
-7. Cliente paga via Pagar.me.
-8. Cliente cai na página de obrigado.
-9. Pedido é salvo no banco.
-10. Pedido aparece no admin.
-11. Webhook atualiza status do pagamento.
-
-## 11. Requisitos de conversão
-
-- CTA visível no primeiro scroll.
-- Botões grandes em mobile.
-- Preço e parcelamento claros.
-- Benefícios próximos do botão.
-- WhatsApp de suporte.
-- FAQ para objeções.
-- Página rápida.
-- Checkout simples.
-- Imagens responsivas.
-
-## 12. Requisitos de SEO
-
-- Metadados em todas as páginas principais.
-- URLs amigáveis.
-- Sitemap.
-- Robots.
-- JSON-LD para produtos.
-- Open Graph.
-- Alt text.
-- Performance mobile.
-
-## 13. Requisitos de tracking
-
-Eventos obrigatórios:
-
-- PageView.
-- ViewContent.
-- AddToCart.
-- InitiateCheckout.
-- Purchase.
-- Lead WhatsApp.
-- Search.
-- UploadStarted.
-- UploadCompleted.
-
-## 14. Requisitos de personalização
-
-A personalização deve ser modular e ativável por produto.
-
-Campos possíveis:
-
-- Nome.
-- Frase.
-- Data.
-- Observações.
-- Upload de imagem.
-- Upload de múltiplas imagens.
-- Dedicatória.
-- Aprovação de prévia, se aplicável.
-
-## 15. Requisitos de admin
-
-Admin MVP:
-
-- Login simples por senha via env.
-- Listagem de pedidos.
-- Detalhes do pedido.
-- Dados do cliente.
-- Status do pedido.
-- Arquivos enviados.
-- Campo de rastreio.
-- Alteração de status.
-
-## 16. Não escopo do MVP
-
-- Marketplace.
-- Login completo de cliente.
-- Painel avançado com permissões.
-- CRM interno.
-- Editor visual complexo.
-- Integração com ERP.
-- Automações avançadas de produção.
-- Checkout com recursos além do necessário para vender.
-
-## 17. Critério geral de sucesso
-
-O MVP será considerado pronto quando o cliente conseguir:
-
-1. Ver produto.
-2. Personalizar, se necessário.
-3. Adicionar ao carrinho.
-4. Finalizar compra com Pagar.me ou fluxo preparado.
-5. Receber página de obrigado.
-6. O pedido aparecer no admin.
-7. Os eventos principais de tracking dispararem sem duplicidade.
+O MVP é bem-sucedido quando apresenta a Galanta com coerência, permite uma solicitação profissional completa, preserva pendências como placeholders seguros, não simula venda e passa lint, build, Docker, responsividade, acessibilidade básica e auditoria de compliance.

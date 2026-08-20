@@ -1,10 +1,10 @@
 import { adminOrderStatusLabels, type AdminOrderStatus } from '@/types/admin'
 
 const statusStyles: Record<AdminOrderStatus, string> = {
-  new: 'bg-ivory text-navy', payment_pending: 'bg-rose/15 text-rose', payment_approved: 'bg-gold/20 text-gold-dark',
-  awaiting_personalization: 'bg-rose/15 text-rose', files_received: 'bg-gold/20 text-gold-dark', in_review: 'bg-ivory text-navy',
-  in_production: 'bg-navy text-cream', ready_to_ship: 'bg-gold/20 text-gold-dark', shipped: 'bg-navy text-cream',
-  delivered: 'bg-gold/20 text-gold-dark', cancelled: 'bg-rose/15 text-rose', refunded: 'bg-rose/15 text-rose',
+  new: 'bg-sterile text-slate', payment_pending: 'bg-clinicalRed/15 text-clinicalRed', payment_approved: 'bg-cyan/20 text-cyan',
+  awaiting_personalization: 'bg-clinicalRed/15 text-clinicalRed', files_received: 'bg-cyan/20 text-cyan', in_review: 'bg-sterile text-slate',
+  in_production: 'bg-graphite text-sterile', ready_to_ship: 'bg-cyan/20 text-cyan', shipped: 'bg-graphite text-sterile',
+  delivered: 'bg-cyan/20 text-cyan', cancelled: 'bg-clinicalRed/15 text-clinicalRed', refunded: 'bg-clinicalRed/15 text-clinicalRed',
 }
 
 export function AdminStatusBadge({ status }: { status: AdminOrderStatus }) {

@@ -1,13 +1,21 @@
 :root {
-  --font-display: 'Cormorant Garamond';
-  --font-sans: 'Inter';
-  --color-ink: #0e1930;
-  --color-navy: #14213d;
-  --color-ivory: #f6f1e8;
-  --color-cream: #fff8ea;
-  --color-gold: #d6b36a;
-  --color-gold-dark: #a9833d;
-  --color-rose: #a26769;
-  --color-muted: #667085;
-  --color-line: #e6e0d6;
+  /* Galanta Medical — Clinical Tech Industrial */
+  --color-galanta-black: 5 10 13;
+  --color-graphite-medical: 11 17 23;
+  --color-deep-slate: 17 24 39;
+  --color-medical-cyan: 0 184 199;
+  --color-clinical-aqua: 46 230 240;
+  --color-sterile-white: 247 250 252;
+  --color-mist-gray: 216 225 232;
+  --color-steel-gray: 122 138 153;
+  --color-signal-green: 33 196 123;
+  --color-alert-amber: 242 184 75;
+  --color-clinical-red: 224 82 82;
+
+  --font-display: var(--font-sora);
+  --font-sans: var(--font-inter);
+  --font-technical: var(--font-ibm-plex-mono);
+
+  --shadow-surface: 0 18px 48px rgb(5 10 13 / 0.08);
+  --shadow-elevated: 0 24px 64px rgb(5 10 13 / 0.16);
 }

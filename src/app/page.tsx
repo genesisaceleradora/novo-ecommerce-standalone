@@ -1,79 +1,83 @@
-import { BenefitCard } from '@/components/marketing/BenefitCard'
+import { CapabilityCard } from '@/components/marketing/CapabilityCard'
 import { FAQ } from '@/components/marketing/FAQ'
 import { HeroBanner } from '@/components/marketing/HeroBanner'
-import { CategoryCard } from '@/components/product/CategoryCard'
-import { ProductCard } from '@/components/product/ProductCard'
 import { Button } from '@/components/ui/Button'
+import { ComplianceNotice } from '@/components/ui/ComplianceNotice'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
-import { benefits, faqs } from '@/data/home'
-import { categories } from '@/data/categories'
-import { products } from '@/data/products'
+import { capabilities, faqs, processSteps } from '@/data/home'
 import { createPageMetadata } from '@/lib/seo/metadata'
 
-export const metadata = createPageMetadata({ title: 'A definir | Ecommerce standalone', description: 'Produtos e presentes com significado — conteúdo provisório.', path: '/' })
+export const metadata = createPageMetadata({
+  title: 'Galanta Medical | Tecnologia aplicada à saúde',
+  description: 'Portal profissional Galanta Medical com Galanta Ortho como linha inicial em desenvolvimento.',
+  path: '/',
+})
 
 export default function HomePage() {
   return (
     <>
       <HeroBanner
-        description="Produto e marca ainda serão definidos. Esta primeira experiência apresenta uma jornada emocional, clara e mobile-first."
-        eyebrow="Ecommerce premium · projeto provisório"
-        primaryAction={{ label: 'Conhecer coleções', href: '#colecoes' }}
-        secondaryAction={{ label: 'Como funciona', href: '#como-funciona' }}
-        title="Um presente criado para transformar momentos em memória."
+        description="Portal profissional preparado para apresentar a Galanta Ortho, organizar informações aprovadas e qualificar interesse técnico de profissionais, clínicas e hospitais."
+        eyebrow="Galanta Medical · Portal profissional"
+        primaryAction={{ label: 'Conhecer a estrutura', href: '#solucoes' }}
+        secondaryAction={{ label: 'Falar com a equipe', href: '/contato' }}
+        title="Tecnologia, engenharia e manufatura digital aplicada à saúde."
       />
 
-      <Container className="py-16 md:py-24" id="colecoes">
-        <SectionTitle description="Categorias, imagens e produtos são placeholders claros até a definição comercial." eyebrow="Estrutura preparada" title="Coleções que começam por uma história." />
-        <div className="mt-9 grid gap-4 sm:grid-cols-3">
-          {categories.filter((category) => category.active).map((category, index) => <CategoryCard description={category.shortDescription ?? category.description} href={`/categoria/${category.slug}`} index={index + 1} key={category.id} title={category.name} />)}
+      <Container className="py-16 md:py-24" id="solucoes">
+        <SectionTitle description="A linha inicial será organizada em duas arquiteturas configuráveis. Produtos, aplicações e especificações permanecem em validação." eyebrow="Galanta Ortho" title="Estrutura Standard + Personal." />
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          <CapabilityCard description="Soluções padronizadas por modelo, tamanho e lado quando essas configurações forem tecnicamente confirmadas." index={1} label="Linha" title="Standard" />
+          <CapabilityCard description="Soluções para casos selecionados, condicionadas às informações e avaliações profissionais aplicáveis." index={2} label="Linha" title="Personal" />
         </div>
       </Container>
 
-      <section className="bg-ivory py-16 md:py-24" id="destaques">
+      <section className="border-y border-mist bg-white py-16 md:py-24">
         <Container>
-          <SectionTitle description="Cards reutilizáveis preparados para preço, imagem, badge e CTA quando o catálogo final existir." eyebrow="Seleção provisória" title="Destaques para emocionar." />
-          <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {products.map((product) => <ProductCard badge={product.badge} description={product.shortDescription} href={`/produto/${product.slug}`} key={product.id} name={product.name} price={product.price} />)}
+          <SectionTitle description="Pilares de plataforma e operação. Não representam promessa clínica, disponibilidade ou resultado de produto." eyebrow="Fundação da linha" title="Disponibilidade, adaptação e personalização." />
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {capabilities.map((capability, index) => <CapabilityCard index={index + 1} key={capability.title} {...capability} />)}
           </div>
         </Container>
       </section>
 
       <Container className="py-16 md:py-24" id="como-funciona">
-        <SectionTitle eyebrow="Uma jornada simples" title="Do significado à entrega." />
-          <ol className="mt-10 grid gap-8 md:grid-cols-3">
-            {['Escolha o produto', 'Personalize se desejar', 'Receba com carinho'].map((step, index) => (
-              <li className="border-t border-gold/50 pt-4" key={step}>
-                <span className="text-sm font-semibold text-gold-dark">0{index + 1}</span>
-                <h3 className="mt-3 font-display text-2xl font-semibold text-navy">{step}</h3>
-                <p className="mt-2 text-sm leading-6 text-muted">Fluxo provisório preparado para produtos e regras comerciais a definir.</p>
-              </li>
-            ))}
-          </ol>
+        <SectionTitle description="O fluxo comercial definitivo será detalhado após as decisões de produto, amostras e atendimento." eyebrow="Fluxo em desenvolvimento" title="Uma jornada profissional, clara e verificável." />
+        <ol className="mt-10 grid gap-8 md:grid-cols-3">
+          {processSteps.map((step, index) => (
+            <li className="border-t border-cyan/45 pt-5" key={step.title}>
+              <span className="font-technical text-[11px] font-semibold text-cyan">{String(index + 1).padStart(2, '0')}</span>
+              <h3 className="mt-4 font-display text-2xl font-semibold tracking-[-0.03em] text-slate">{step.title}</h3>
+              <p className="mt-2 text-sm leading-6 text-steel">{step.description}</p>
+            </li>
+          ))}
+        </ol>
       </Container>
 
-      <section className="bg-ivory py-16 md:py-24">
+      <section className="bg-graphite py-16 text-sterile md:py-24">
         <Container>
-          <SectionTitle align="center" eyebrow="Por que escolher" title="Mais que um produto, uma lembrança." />
-          <div className="mt-10 grid gap-4 md:grid-cols-3">
-            {benefits.map((benefit, index) => <BenefitCard index={index + 1} key={benefit.title} {...benefit} />)}
+          <div className="grid gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-center">
+            <SectionTitle description="A plataforma evolui sem preencher lacunas técnicas com afirmações prováveis. Cada informação será publicada conforme sua fonte e aprovação." eyebrow="Desenvolvimento responsável" title="Clareza antes da complexidade." tone="dark" />
+            <ComplianceNotice title="Informação em validação" tone="warning">
+              Conteúdo de apresentação em desenvolvimento. Informações técnicas e regulatórias serão publicadas após validação e aprovação aplicáveis.
+            </ComplianceNotice>
           </div>
         </Container>
       </section>
 
-      <Container className="py-16 md:py-24" id="sobre">
-        <div className="rounded-3xl bg-navy px-7 py-12 text-center text-cream md:px-16 md:py-20">
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">Marca a definir</p>
-          <h2 className="mx-auto mt-4 max-w-2xl font-display text-4xl font-semibold leading-tight md:text-5xl">Feito para quem quer presentear com significado.</h2>
-          <p className="mx-auto mt-5 max-w-xl text-sm leading-6 text-cream/70">Uma base flexível para transformar a futura identidade, produtos e histórias da marca em uma experiência de compra confiável.</p>
-          <Button className="mt-8" href="#colecoes">Ver estrutura do catálogo</Button>
-        </div>
+      <Container className="py-16 md:py-24">
+        <SectionTitle eyebrow="Dúvidas frequentes" title="Informação profissional com contexto." />
+        <div className="mt-8"><FAQ items={faqs} /></div>
       </Container>
 
       <Container className="pb-16 md:pb-24">
-        <SectionTitle eyebrow="Dúvidas frequentes" title="Tudo começa com clareza." />
-        <div className="mt-8"><FAQ items={faqs} /></div>
+        <div className="rounded-2xl border border-cyan/25 bg-galanta-black px-6 py-12 text-center text-sterile sm:px-12 md:py-16">
+          <p className="font-technical text-[11px] font-semibold uppercase tracking-[0.14em] text-aqua">Contato profissional</p>
+          <h2 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-semibold tracking-[-0.04em] sm:text-4xl">Converse com a equipe Galanta.</h2>
+          <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-mist/70">O canal definitivo e o prazo de retorno ainda serão confirmados. Nenhuma informação de paciente deve ser enviada.</p>
+          <Button className="mt-7" href="/contato">Acessar contato</Button>
+        </div>
       </Container>
     </>
   )

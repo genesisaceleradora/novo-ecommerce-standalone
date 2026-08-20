@@ -7,7 +7,7 @@ export const mockAdminOrders: AdminOrder[] = [
     customer: { fullName: 'Cliente demonstrativo', email: 'cliente@example.com', phone: '(11) 90000-0000', document: '***.***.***-**' },
     customerNotes: 'Este é um pedido de demonstração. Regras comerciais a definir.',
     internalNotes: 'Confirmar briefing antes de iniciar produção.',
-    utms: { source: 'instagram', medium: 'paid_social', campaign: 'placeholder-presente' },
+    utms: { source: 'instagram', medium: 'paid_social', campaign: 'placeholder-galanta' },
     items: [{
       id: 'item_demo_1001', productName: 'Produto personalizado — exemplo', quantity: 1, unitPrice: 18990, total: 18990,
       customization: { name: 'Nome de exemplo', phrase: 'Uma mensagem demonstrativa', date: '2026-08-19', notes: 'Usar como referência de estrutura.' },
@@ -28,7 +28,7 @@ export const mockAdminOrders: AdminOrder[] = [
     id: 'ord_demo_1003', number: '#1003', createdAt: '2026-08-17T10:00:00.000Z', status: 'in_production', paymentStatus: 'approved', subtotal: 37980, shippingTotal: 1990, total: 39970,
     customer: { fullName: 'Comprador exemplo', email: 'comprador@example.com', phone: '(31) 90000-0000', document: '***.***.***-**' },
     trackingCode: 'Código de rastreio a definir',
-    items: [{ id: 'item_demo_1003', productName: 'Produto personalizado — exemplo', quantity: 2, unitPrice: 18990, total: 37980, customization: { phrase: 'Lembrança de um momento especial', musicLink: 'https://exemplo.local/musica-placeholder' }, files: [] }],
+    items: [{ id: 'item_demo_1003', productName: 'Produto configurável — exemplo', quantity: 2, unitPrice: 18990, total: 37980, customization: { phrase: 'Conteúdo demonstrativo', musicLink: 'https://exemplo.local/musica-placeholder' }, files: [] }],
     history: [{ id: 'history_1003', status: 'in_production', createdAt: '2026-08-17T10:30:00.000Z', description: 'Produção iniciada (demonstração).' }],
   },
   {

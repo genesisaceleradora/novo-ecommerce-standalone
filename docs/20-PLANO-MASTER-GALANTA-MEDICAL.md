@@ -199,6 +199,8 @@ Nenhum documento deve continuar orientando futuros agentes a construir um ecomme
 
 ## 7. Fase 2 — Design system Galanta Medical
 
+Status: concluída em 20/08/2026. A fundação visual Clinical Tech Industrial, os componentes técnicos e o shell global Galanta foram aplicados sem migrar o domínio legado de catálogo e fluxo.
+
 Branch recomendada:
 
 ```txt
@@ -562,4 +564,4 @@ Cada etapa só está pronta quando:
 
 ## 19. Próxima ação
 
-Versionar a fundação documental e iniciar a Fase 2 em PR separado: aplicar o design system Galanta Medical sem migrar catálogo ou fluxo B2B no mesmo PR.
+Versionar o design system e iniciar a Fase 3 em PR separado: implementar a home e a estrutura institucional Galanta Medical sem migrar o catálogo ou o fluxo B2B no mesmo PR.

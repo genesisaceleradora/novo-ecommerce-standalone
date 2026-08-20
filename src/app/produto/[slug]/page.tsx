@@ -36,33 +36,33 @@ export default async function ProductPage({ params }: ProductPageProps) {
       <ProductSchema product={product} />
       <BreadcrumbSchema items={[{ name: 'Início', path: '/' }, { name: 'Catálogo', path: `/categoria/${product.categorySlug}` }, { name: product.name, path: `/produto/${product.slug}` }]} />
       <ProductViewTracking product={product} />
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted">Catálogo demonstrativo / {product.categorySlug}</p>
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-steel">Catálogo demonstrativo / {product.categorySlug}</p>
       <div className="mt-5 grid gap-10 lg:grid-cols-2 lg:gap-14">
         <ProductGallery images={product.images} productName={product.name} />
         <div className="lg:pt-4">
           {product.badge && <Badge>{product.badge}</Badge>}
-          <h1 className="mt-4 font-display text-4xl font-semibold leading-tight text-navy sm:text-5xl">{product.name}</h1>
-          <p className="mt-4 text-base leading-7 text-muted">{product.shortDescription}</p>
-          <div className="mt-7 border-y border-line py-5">
-            <p className="font-display text-3xl font-semibold text-navy">{formatPriceInBRL(product.price)}</p>
-            <p className="mt-1 text-sm text-muted">Em até {product.installmentMax}x de {installmentValue} sem juros <span className="text-xs">(valores demonstrativos)</span></p>
-            {product.pixDiscountPercent && <p className="mt-2 text-sm font-semibold text-gold-dark">{product.pixDiscountPercent}% de desconto no Pix (placeholder)</p>}
+          <h1 className="mt-4 font-display text-4xl font-semibold leading-tight text-slate sm:text-5xl">{product.name}</h1>
+          <p className="mt-4 text-base leading-7 text-steel">{product.shortDescription}</p>
+          <div className="mt-7 border-y border-mist py-5">
+            <p className="font-display text-3xl font-semibold text-slate">{formatPriceInBRL(product.price)}</p>
+            <p className="mt-1 text-sm text-steel">Em até {product.installmentMax}x de {installmentValue} sem juros <span className="text-xs">(valores demonstrativos)</span></p>
+            {product.pixDiscountPercent && <p className="mt-2 text-sm font-semibold text-cyan">{product.pixDiscountPercent}% de desconto no Pix (placeholder)</p>}
           </div>
           <ProductPersonalization product={product} />
-          <p className="mt-3 text-center text-xs text-muted">Carrinho persistente no navegador. Checkout será implementado em uma próxima etapa.</p>
-          <dl className="mt-8 space-y-4 border-t border-line pt-6 text-sm">
-            <div><dt className="font-semibold text-navy">Produção</dt><dd className="mt-1 text-muted">{product.productionTime}</dd></div>
-            <div><dt className="font-semibold text-navy">Envio</dt><dd className="mt-1 text-muted">{product.shippingInfo}</dd></div>
-            {product.personalization.enabled && <div><dt className="font-semibold text-navy">Personalização</dt><dd className="mt-1 text-muted">{product.personalization.instructions ?? 'Disponível para este produto demonstrativo.'}</dd></div>}
+          <p className="mt-3 text-center text-xs text-steel">Carrinho persistente no navegador. Checkout será implementado em uma próxima etapa.</p>
+          <dl className="mt-8 space-y-4 border-t border-mist pt-6 text-sm">
+            <div><dt className="font-semibold text-slate">Produção</dt><dd className="mt-1 text-steel">{product.productionTime}</dd></div>
+            <div><dt className="font-semibold text-slate">Envio</dt><dd className="mt-1 text-steel">{product.shippingInfo}</dd></div>
+            {product.personalization.enabled && <div><dt className="font-semibold text-slate">Personalização</dt><dd className="mt-1 text-steel">{product.personalization.instructions ?? 'Disponível para este produto demonstrativo.'}</dd></div>}
           </dl>
         </div>
       </div>
 
-      <section className="mt-16 border-t border-line pt-16 md:mt-24 md:pt-24">
+      <section className="mt-16 border-t border-mist pt-16 md:mt-24 md:pt-24">
         <SectionTitle eyebrow="Detalhes técnicos" title="Feito para ganhar significado." />
         <div className="mt-8 grid gap-5 md:grid-cols-2">
-          <div className="rounded-2xl bg-ivory p-6"><h2 className="font-display text-2xl font-semibold text-navy">Sobre este exemplo</h2><p className="mt-3 text-sm leading-6 text-muted">{product.longDescription}</p></div>
-          <div className="rounded-2xl bg-ivory p-6"><h2 className="font-display text-2xl font-semibold text-navy">O que está incluído</h2><ul className="mt-3 space-y-2 text-sm leading-6 text-muted">{(product.whatsIncluded ?? product.benefits ?? ['Informações a definir']).map((item) => <li key={item}>— {item}</li>)}</ul></div>
+          <div className="rounded-2xl bg-sterile p-6"><h2 className="font-display text-2xl font-semibold text-slate">Sobre este exemplo</h2><p className="mt-3 text-sm leading-6 text-steel">{product.longDescription}</p></div>
+          <div className="rounded-2xl bg-sterile p-6"><h2 className="font-display text-2xl font-semibold text-slate">O que está incluído</h2><ul className="mt-3 space-y-2 text-sm leading-6 text-steel">{(product.whatsIncluded ?? product.benefits ?? ['Informações a definir']).map((item) => <li key={item}>— {item}</li>)}</ul></div>
         </div>
       </section>
 

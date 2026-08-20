@@ -5,8 +5,8 @@ import { SectionTitle } from '@/components/ui/SectionTitle'
 import { faqs } from '@/data/home'
 import { createPageMetadata } from '@/lib/seo/metadata'
 
-export const metadata: Metadata = createPageMetadata({ title: 'Dúvidas frequentes', description: 'Respostas provisórias sobre o ecommerce.', path: '/faq' })
+export const metadata: Metadata = createPageMetadata({ title: 'Dúvidas frequentes', description: 'Respostas provisórias sobre o portal profissional Galanta Medical.', path: '/faq' })
 
 export default function FAQPage() {
-  return <Container className="py-14 md:py-24"><SectionTitle description="As respostas serão revisadas quando marca, produto e regras comerciais estiverem definidos." eyebrow="FAQ provisório" title="Comece com clareza." /><div className="mt-8"><FAQ items={faqs} /></div></Container>
+  return <Container className="py-14 md:py-24"><SectionTitle description="As respostas serão atualizadas conforme produto, conteúdo técnico e regras comerciais forem aprovados." eyebrow="FAQ profissional" title="Informação com contexto e transparência." /><div className="mt-8"><FAQ items={faqs} /></div></Container>
 }

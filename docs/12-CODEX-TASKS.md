@@ -19,6 +19,8 @@ Branch: docs/galanta-medical-foundation
 
 ## Task 2 — Design system
 
+Status: concluída em 20/08/2026.
+
 ```txt
 Branch: feat/galanta-medical-design-system
 ```

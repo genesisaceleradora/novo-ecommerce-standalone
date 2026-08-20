@@ -28,12 +28,12 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   return (
     <>
       <BreadcrumbSchema items={[{ name: 'Início', path: '/' }, { name: category.name, path: `/categoria/${category.slug}` }]} />
-      <section className="bg-ink py-16 text-cream md:py-20">
+      <section className="bg-galanta-black py-16 text-sterile md:py-20">
         <Container>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-gold">{category.eyebrow ?? 'Coleção provisória'}</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan">{category.eyebrow ?? 'Coleção provisória'}</p>
           <h1 className="mt-4 max-w-3xl font-display text-5xl font-semibold leading-[0.98] md:text-6xl">{category.name}</h1>
-          <p className="mt-5 max-w-2xl text-base leading-7 text-cream/75">{category.description}</p>
-          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.12em] text-gold/80">Conteúdo demonstrativo — categoria final a definir</p>
+          <p className="mt-5 max-w-2xl text-base leading-7 text-sterile/75">{category.description}</p>
+          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.12em] text-cyan/80">Conteúdo demonstrativo — categoria final a definir</p>
         </Container>
       </section>
       <Container className="py-16 md:py-24">
@@ -42,7 +42,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
           <div className="mt-9 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {categoryProducts.map((product) => <ProductCard badge={product.badge} description={product.shortDescription} href={`/produto/${product.slug}`} key={product.id} name={product.name} price={product.price} />)}
           </div>
-        ) : <p className="mt-8 rounded-2xl border border-line bg-ivory p-6 text-sm text-muted">Nenhum produto demonstrativo nesta categoria.</p>}
+        ) : <p className="mt-8 rounded-2xl border border-mist bg-sterile p-6 text-sm text-steel">Nenhum produto demonstrativo nesta categoria.</p>}
       </Container>
     </>
   )

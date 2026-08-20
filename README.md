@@ -5,14 +5,14 @@ Base profissional mobile first e sem Base44 para Galanta Medical / Galanta Ortho
 ## Stack e escopo atual
 
 - Next.js App Router, TypeScript, Tailwind CSS e ESLint.
-- A aplicação ainda exibe temporariamente o MVP ecommerce legado enquanto a migração visual e funcional Galanta é executada em PRs separados.
+- O design system Clinical Tech Industrial da Galanta Medical já está aplicado; a migração funcional segue organizada em PRs separados.
 - Catálogo, personalização, carrinho, checkout e admin legados funcionam somente com dados mockados e não representam a operação Galanta final.
 - SEO, sitemap, robots e tracking são centralizados.
 - Pagar.me, Supabase/Postgres e storage privado possuem apenas fundações arquiteturais; não há cobrança, banco ou upload real.
 
 ## Direção estratégica
 
-A evolução para Galanta Medical / Galanta Ortho está organizada no [Plano Master](docs/20-PLANO-MASTER-GALANTA-MEDICAL.md). Os nomes são finais, as pendências não bloqueantes estão na [matriz de decisões](docs/21-MATRIZ-DE-DECISOES-GALANTA.md) e a documentação foi normalizada para iniciar o design system.
+A evolução para Galanta Medical / Galanta Ortho está organizada no [Plano Master](docs/20-PLANO-MASTER-GALANTA-MEDICAL.md). Os nomes são finais, as pendências não bloqueantes estão na [matriz de decisões](docs/21-MATRIZ-DE-DECISOES-GALANTA.md) e a fundação visual está pronta para a estrutura institucional da próxima fase.
 
 Documentos centrais:
 

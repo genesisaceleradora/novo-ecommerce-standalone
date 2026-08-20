@@ -63,6 +63,8 @@ Copie `.env.example` para `.env.local`. Não envie `.env.local`, chaves ou token
 
 Pré-requisitos: Docker Engine com Docker Compose. Para executar localmente, crie o arquivo de ambiente antes de subir o container:
 
+Para o procedimento completo de publicação em Ubuntu, proxy reverso, SSL e atualização, consulte o [guia de deploy em servidor Docker](docs/15-DEPLOY-SERVIDOR-DOCKER.md).
+
 ```bash
 cp .env.example .env.local
 docker compose up --build

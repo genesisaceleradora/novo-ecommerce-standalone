@@ -1,47 +1,86 @@
-# 14 — Pendências para produção real
+# 14 — Pendências para Produção Real
 
-## Estratégia e marca
+## Marca e ativos
 
-- [ ] Nome do projeto e domínio final.
-- [ ] Produto principal, oferta, público prioritário e categorias reais.
-- [ ] Posicionamento, logo, paleta, tipografia, tom e manual visual finais.
-- [ ] Fotos oficiais, descrições, especificações, embalagem e regras de personalização.
+- [x] Confirmar Galanta Medical como marca final.
+- [x] Confirmar Galanta Ortho como linha inicial final.
+- [ ] Receber logo e manual visual aprovados.
+- [ ] Receber renders/fotografias com origem, licença e aprovação.
+- [ ] Definir domínio final e canais oficiais.
 
-## Comercial e conteúdo
+## Produto e regulatório
 
-- [ ] Preços, margem, desconto Pix, parcelamento, frete, prazo de produção e políticas comerciais reais.
-- [ ] Revisar todos os placeholders herdados da referência provisória, inclusive métricas e copy da topbar.
-- [ ] Redigir e revisar juridicamente política de privacidade, termos de uso e trocas/devoluções.
-- [ ] Definir WhatsApp, e-mail de suporte e fluxos de atendimento.
+- [ ] Definir produto/modelo inicial e finalidade pretendida.
+- [ ] Confirmar materiais, tamanhos, lados, versões e variações.
+- [ ] Confirmar protocolo, cuidados, limpeza e armazenamento.
+- [ ] Confirmar situação, classificação e requisitos regulatórios aplicáveis.
+- [ ] Definir o que constitui amostra e seu uso permitido.
+- [ ] Aprovar claims, disclaimers, rótulos, instruções e materiais.
+- [ ] Estruturar qualidade, rastreabilidade, tecnovigilância e contato técnico.
 
-## Pagamento, pedidos e operação
+## Comercial e atendimento
 
-- [ ] Criar conta Pagar.me, credenciais por ambiente e checkout/cobrança conforme documentação oficial.
-- [ ] Validar assinatura de webhook, persistir eventos de forma idempotente e atualizar pagamento/pedido no servidor.
-- [ ] Aplicar `database/schema.sql` via migrações no Supabase/Postgres e conectar a camada server-side.
-- [ ] Substituir pedidos, catálogo e admin mockados por dados persistidos; validar preço e estoque no servidor.
-- [ ] Criar bucket privado de uploads, RLS/políticas de acesso, URLs assinadas curtas e rotina de exclusão de arquivos.
-- [ ] Implementar cálculo de frete, cupom, rastreio e notificações transacionais reais.
+- [ ] Definir apresentação, amostra, proposta e planejamento de estoque.
+- [ ] Definir preço, tabela B2B, faturamento, frete e impostos quando aplicável.
+- [ ] Definir responsável por leads, SLA e canais.
+- [ ] Definir critérios de qualificação e perda.
+- [ ] Decidir se haverá venda online e quem poderá comprar.
 
-## Segurança e LGPD
+## Conteúdo e jurídico
 
-- [ ] Trocar o login mockado do admin por autenticação real, papéis, auditoria e rate limiting.
-- [ ] Nunca registrar documento, endereço, personalização ou arquivos em logs, analytics ou URLs.
-- [ ] Definir retenção, exclusão, exportação e atendimento aos direitos LGPD.
-- [ ] Fazer revisão de segurança antes de aceitar pagamento ou dados reais de clientes.
+- [ ] Aprovar copy institucional e técnica.
+- [ ] Produzir materiais técnicos versionados.
+- [ ] Revisar política de privacidade, termos e consentimentos.
+- [ ] Definir retenção, exclusão e direitos LGPD.
+- [ ] Proibir e monitorar entrada de dados de pacientes no fluxo comercial.
 
-## Marketing, SEO e deploy
+## Plataforma e dados
 
-- [ ] Provisionar servidor/container registry, proxy reverso HTTPS, certificados, firewall, health checks, monitoramento, alertas e backups para o deploy Docker.
-- [ ] Configurar domínio HTTPS e `NEXT_PUBLIC_SITE_URL` no ambiente do container; confirmar canonical, sitemap e robots de produção.
-- [ ] Definir gestão segura de variáveis no servidor e rotação de segredos; nunca incluir `.env` ou chaves na imagem Docker.
-- [ ] Só liberar indexação depois de conteúdo, domínio e páginas legais revisados.
-- [ ] Configurar e validar Meta Pixel, GA4, GTM, UTMs padrão e consentimento de cookies conforme necessidade jurídica.
-- [ ] Substituir metadata, Open Graph, JSON-LD, imagens e copy provisórios pelos dados reais da marca/produto.
-- [ ] Criar monitoramento de erros, alertas de pagamento/webhook e rotina de backup antes do lançamento.
+- [ ] Migrar o catálogo legado para o domínio Galanta.
+- [ ] Migrar carrinho/checkout para solicitação técnica.
+- [ ] Migrar admin de pedidos para leads.
+- [ ] Atualizar `database/schema.sql` para o domínio B2B antes de aplicá-lo.
+- [ ] Conectar Supabase/Postgres com RLS, migrações e backup.
+- [ ] Implementar autenticação real, papéis, auditoria e rate limiting.
+- [ ] Integrar CRM/notificações quando a operação estiver definida.
 
-## Melhorias após o MVP
+## Storage e documentos
 
-- [ ] Testes automatizados de fluxos críticos e testes de acessibilidade mais completos.
-- [ ] Área do cliente, CRM, integrações de ERP, estoque avançado e automações de produção/WhatsApp, se fizerem sentido.
-- [ ] Painel administrativo com filtros, edição de rastreio, permissões e operação baseada em dados reais.
+- [ ] Definir necessidade de arquivos privados.
+- [ ] Configurar bucket privado, autorização, URLs assinadas e retenção.
+- [ ] Implementar versão/aprovação de materiais técnicos.
+- [ ] Nunca criar upload de paciente sem escopo, base legal e segurança aprovados.
+
+## Pagamento futuro
+
+- [ ] Decidir se Pagar.me será necessário.
+- [ ] Consultar documentação oficial vigente.
+- [ ] Criar pedido server-side e validar valores.
+- [ ] Implementar webhook assinado e idempotente.
+- [ ] Implementar reconciliação, erros, cancelamento e reembolso.
+- [ ] Disparar Purchase somente após pagamento confirmado.
+
+## SEO, tracking e lançamento
+
+- [ ] Configurar domínio HTTPS e `NEXT_PUBLIC_SITE_URL`.
+- [ ] Aprovar metadata, sitemap, schema e conteúdo indexável.
+- [ ] Liberar robots somente após gate de lançamento.
+- [ ] Configurar tracking/consentimento sem PII.
+- [ ] Validar campanhas e páginas sob o mesmo compliance.
+- [ ] Configurar monitoramento, alertas e analytics operacionais.
+
+## Infraestrutura Docker
+
+- [ ] Provisionar servidor e registry.
+- [ ] Configurar proxy reverso, SSL, firewall e health checks.
+- [ ] Configurar secrets fora da imagem.
+- [ ] Definir CI/CD, rollback, logs e observabilidade.
+- [ ] Testar backup e restauração quando banco entrar.
+
+## Qualidade
+
+- [ ] Testes automatizados dos fluxos críticos.
+- [ ] Auditoria completa de acessibilidade.
+- [ ] Revisão de segurança e privacidade.
+- [ ] Teste com profissionais representativos.
+- [ ] Aprovação técnica/regulatória final antes de publicação clínica/comercial.

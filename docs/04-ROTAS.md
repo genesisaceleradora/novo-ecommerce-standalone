@@ -1,66 +1,89 @@
-# 04 — Rotas do Ecommerce
+# 04 — Rotas Galanta Medical
 
-## 1. Rotas públicas
-
-```txt
-/                              Home
-/categoria/[slug]              Categoria/coleção
-/produto/[slug]                Produto individual
-/carrinho                      Página fallback do carrinho
-/checkout                      Checkout
-/obrigado                      Página de obrigado
-/sobre                         Sobre a marca
-/faq                           Perguntas frequentes
-/contato                       Contato
-/politica-de-privacidade       Política de privacidade
-/politica-de-troca             Política de troca/devolução
-/termos-de-uso                 Termos de uso
-```
-
-## 2. Rotas administrativas
+## 1. Rotas públicas alvo
 
 ```txt
-/admin                         Dashboard/admin
-/admin/pedidos                 Lista de pedidos
-/admin/pedidos/[id]            Detalhe do pedido
-/admin/produtos                Produtos
-/admin/categorias              Categorias
+/                              Home Galanta Medical
+/galanta-ortho                 Visão da linha
+/produtos                      Catálogo profissional
+/produto/[slug]                Produto/modelo
+/linha-standard                Modelo Standard
+/linha-personal                Modelo Personal
+/como-funciona                 Processo conceitual
+/amostras-tecnicas             Programa/solicitação
+/profissionais                 Conteúdo por profissional
+/clinicas-e-hospitais          Conteúdo institucional B2B
+/materiais-tecnicos            Hub de materiais aprovados
+/regulatorio-e-seguranca       Status, segurança e contatos
+/solicitacao                   Resumo da seleção
+/solicitacao/dados             Dados profissionais
+/solicitacao/confirmacao       Confirmação mockada
+/faq                           FAQ profissional
+/contato                       Contato comercial/técnico
+/sobre                         Galanta Medical
+/politica-de-privacidade       Política
+/termos-de-uso                 Termos
 ```
 
-No MVP, `/admin` pode conter tudo em uma estrutura simples, sem necessidade de dashboard avançado.
-
-## 3. Rotas API/server
+## 2. Rotas dinâmicas futuras
 
 ```txt
-/api/checkout/create           Criar pedido/checkout
-/api/checkout/webhook          Receber webhook Pagar.me
-/api/uploads/sign              Gerar URL assinada para upload, se aplicável
-/api/admin/login               Login admin simples, se necessário
+/categoria/[slug]
+/materiais-tecnicos/[slug]
 ```
 
-## 4. Regras de URL
+Categoria pode continuar durante a migração, mas deve receber slugs Galanta.
 
-- URLs em português, simples e amigáveis.
-- Slugs em minúsculo.
-- Sem acentos nos slugs.
-- Sem parâmetros desnecessários.
-
-Exemplos:
+## 3. Rotas administrativas
 
 ```txt
-/categoria/presentes-personalizados
-/produto/produto-exemplo-personalizado
+/admin
+/admin/solicitacoes/[id]
 ```
 
-## 5. Rotas futuras possíveis
+Rotas legadas `/admin/pedidos/[id]` podem permanecer até a migração do admin, depois redirecionar.
+
+## 4. API alvo do MVP
 
 ```txt
-/busca?q=
-/colecoes
-/datas-especiais
-/rastrear-pedido
-/minha-conta
-/login
+/api/solicitacoes/create
+/api/admin/login
+/api/admin/logout
 ```
 
-Não implementar no MVP se não for necessário.
+Futuras:
+
+```txt
+/api/materials/[id]/download
+/api/uploads/sign
+/api/webhooks/pagarme
+```
+
+## 5. Rotas legadas
+
+Quando os destinos novos estiverem prontos:
+
+```txt
+/carrinho  → /solicitacao
+/checkout  → /solicitacao/dados
+/obrigado  → /solicitacao/confirmacao
+```
+
+Não remover antes de validar links, tracking, sitemap e persistência.
+
+## 6. Regras de URL
+
+- português, minúsculo e sem acentos;
+- slugs curtos e estáveis;
+- sem IDs sensíveis;
+- query apenas para filtros não indexáveis;
+- canonical único;
+- material restrito nunca exposto por URL pública previsível.
+
+## 7. SEO e indexação
+
+- sitemap contém apenas páginas ativas e aprovadas;
+- admin, API, solicitação e materiais privados não entram no sitemap;
+- rotas de confirmação usam `noindex`;
+- redirects permanentes somente após estabilização;
+- robots continua bloqueado até gate de produção.

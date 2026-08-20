@@ -1,94 +1,99 @@
-# 07 — Personalização e Uploads
+# 07 — Configuração Técnica e Arquivos
 
-## 1. Objetivo
+## 1. Mudança de domínio
 
-Criar módulo flexível de personalização para produtos que precisem receber nome, frase, foto, arquivo ou observações.
+A personalização afetiva do ecommerce anterior será substituída por configuração técnica de produto e interesse profissional.
+
+Remover progressivamente:
+
+```txt
+Nome personalizado
+Frase
+Data comemorativa
+Dedicatória
+Música
+Fotos pessoais
+```
+
+Preparar:
+
+```txt
+Tamanho
+Lado
+Modelo/versão
+Tipo de solicitação
+Quantidade estimada
+Observação comercial/técnica sem dados de paciente
+```
 
 ## 2. Regras
 
-- Personalização deve ser ativável por produto.
-- Produtos sem personalização não devem exibir campos desnecessários.
-- Uploads de clientes devem ser tratados como dados privados.
-- Arquivos não devem ser públicos por padrão.
+- configuração vem do produto;
+- campos pendentes não aparecem como opção final;
+- produtos sem variação funcionam normalmente;
+- estado da seleção é preservado no resumo;
+- nenhum campo pode induzir indicação clínica;
+- nenhum dado de paciente deve ser solicitado.
 
-## 3. Campos possíveis
+## 3. Uploads no MVP
 
-```txt
-Nome
-Frase
-Data
-Observações
-Dedicatória
-Upload de imagem
-Upload múltiplo
-Link de música/QR Code, se futuro
-```
+Upload clínico ou pessoal não será implementado. A interface pode preparar o conceito de documentos técnicos aprovados, mas não deve aceitar exames, fotografias, prescrições ou prontuários.
 
-## 4. Experiência do usuário
+## 4. Documentos da Galanta
 
-O formulário deve ser simples:
+Materiais técnicos devem possuir:
 
-1. Cliente escolhe produto.
-2. Preenche campos necessários.
-3. Envia arquivos.
-4. Vê resumo da personalização no carrinho.
-5. Confirma antes de pagar.
+- título;
+- tipo;
+- produto aplicável;
+- versão;
+- status;
+- data;
+- responsável;
+- visibilidade pública ou restrita.
 
-## 5. Validações
+Somente documentos aprovados podem ser públicos.
 
-- Tamanho máximo do arquivo.
-- Tipo permitido: jpg, png, webp, pdf se necessário.
-- Campo obrigatório por produto.
-- Limite de caracteres.
-- Mensagens claras.
+## 5. Storage futuro
 
-## 6. Storage
-
-Estrutura recomendada:
+Se arquivos restritos forem necessários:
 
 ```txt
-/orders/{orderId}/uploads/{fileName}
+/organizations/{organizationId}/requests/{requestId}/files/{fileId}
 ```
 
-## 7. Privacidade
+Requisitos:
 
-Fotos de clientes, crianças, famílias ou documentos não devem ficar públicas.
+- bucket privado;
+- URLs assinadas curtas;
+- autorização server-side;
+- tipo/tamanho permitidos;
+- malware scanning quando aplicável;
+- auditoria de acesso;
+- retenção e exclusão;
+- proibição de nome original no path quando expuser PII.
 
-Usar:
+## 6. Privacidade
 
-- Bucket privado.
-- URLs assinadas.
-- Expiração de links.
-- Controle de acesso no admin.
+- não coletar dados de pacientes no MVP;
+- aviso explícito em campos livres;
+- não persistir conteúdo sensível em localStorage;
+- não expor arquivo em analytics, URL ou log;
+- não usar storage público;
+- LGPD e base legal precisam de validação antes da operação.
 
-## 8. Carrinho
+## 7. Migração do carrinho legado
 
-O item do carrinho deve guardar:
+- nova chave/versionamento de armazenamento;
+- não converter automaticamente personalizações antigas;
+- descartar estado legado de forma segura na primeira migração;
+- tipo do novo item deve usar `variation`/`technicalRequest`, não `customization` afetiva.
 
-```ts
-customization: {
-  name?: string
-  phrase?: string
-  date?: string
-  notes?: string
-  dedication?: string
-  uploadedFiles?: UploadedFile[]
-}
-```
+## 8. Aceite
 
-## 9. Admin
-
-No detalhe do pedido, o admin deve exibir:
-
-- Produto.
-- Personalização.
-- Arquivos.
-- Observações.
-- Status.
-- Botão para baixar/visualizar arquivos.
-
-## 10. MVP
-
-No MVP, se o storage ainda não estiver configurado, simular upload e deixar a interface preparada.
-
-Não bloquear a criação da base do ecommerce por causa de upload avançado.
+- configuração aparece somente quando disponível;
+- seleção chega ao resumo e confirmação;
+- quantidade pode mudar sem perder configuração;
+- recarga preserva somente dados não sensíveis;
+- aviso de dados de paciente é visível;
+- nenhum upload real é executado.

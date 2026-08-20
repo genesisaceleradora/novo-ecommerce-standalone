@@ -1,113 +1,133 @@
-# 12 — Tasks para Codex
+# 12 — Roadmap de Tasks para Codex
 
-## Task 1 — Scaffold do projeto
+## Status
 
-Criar base Next.js + TypeScript + Tailwind.
+O scaffold ecommerce anterior está concluído. As próximas tasks executam a migração Galanta em PRs pequenos, seguindo `20-PLANO-MASTER-GALANTA-MEDICAL.md`.
 
-Entregáveis:
+Os arquivos existentes em `/prompts/01-SCAFFOLD.md` até `/prompts/07-ADMIN.md` e os exemplos atuais em `/seed` são históricos do scaffold B2C. Não devem ser reutilizados nas novas fases sem reescrita explícita para os documentos 16–21.
 
-- Projeto inicial.
-- App Router.
-- Layout global.
-- Tailwind configurado.
-- Estrutura de pastas.
-- `.env.example`.
-- README de instalação.
+## Task 1 — Fundação documental
 
-Prompt: `prompts/01-SCAFFOLD.md`
+```txt
+Branch: docs/galanta-medical-foundation
+```
 
-## Task 2 — Design system e componentes base
+- criar docs 16–21;
+- normalizar docs legados;
+- definir precedência e placeholders;
+- não alterar aplicação.
 
-Entregáveis:
+## Task 2 — Design system
 
-- Button.
-- Container.
-- SectionTitle.
-- Topbar.
-- Header.
-- Footer.
-- HeroBanner.
-- FAQ.
-- ProductCard.
-- CategoryCard.
+```txt
+Branch: feat/galanta-medical-design-system
+```
 
-Prompt: `prompts/02-DESIGN-SYSTEM.md`
+- tokens Clinical Tech Industrial;
+- Sora, Inter e IBM Plex Mono;
+- componentes base;
+- header/footer/topbar;
+- acessibilidade;
+- sem trocar catálogo/fluxo.
 
-## Task 3 — Catálogo mockado
+## Task 3 — Site institucional
 
-Entregáveis:
+```txt
+Branch: feat/galanta-medical-site-foundation
+```
 
-- Tipos de Category e Product.
-- Dados mockados.
-- Página de categoria.
-- Página de produto.
-- Grid de produtos.
+- home;
+- navegação;
+- shell das páginas profissionais;
+- copy estrutural segura;
+- sem catálogo final.
 
-Prompt: `prompts/03-CATALOGO.md`
+## Task 4 — Catálogo Galanta Ortho
 
-## Task 4 — Carrinho
+```txt
+Branch: feat/galanta-ortho-catalog
+```
 
-Entregáveis:
+- tipos de linha/produto/variação/documento;
+- mocks seguros;
+- páginas e cards;
+- sem preço/Offer.
 
-- Carrinho lateral.
-- Adicionar/remover item.
-- Quantidade.
-- Subtotal.
-- Persistência local.
+## Task 5 — Solicitação técnica
 
-Prompt: `prompts/04-CARRINHO.md`
+```txt
+Branch: feat/galanta-b2b-technical-request
+```
 
-## Task 5 — Checkout Pagar.me preparado
+- provider/estado;
+- resumo;
+- formulário profissional;
+- API e confirmação mockadas;
+- migração das rotas legadas;
+- sem pagamento/dados de paciente.
 
-Entregáveis:
+## Task 6 — Admin de leads
 
-- Página checkout.
-- Formulário de cliente/endereço.
-- Resumo do pedido.
-- Camada `/lib/payments/pagarme.ts`.
-- API route para criar checkout/pedido.
-- Webhook route preparada.
+```txt
+Branch: feat/galanta-admin-lead-pipeline
+```
 
-Prompt: `prompts/05-CHECKOUT-PAGARME.md`
+- dashboard/lista/detalhe;
+- status B2B;
+- mocks e persistência local;
+- remover faturamento fictício.
 
-## Task 6 — Tracking e SEO
+## Task 7 — Conteúdo e autoridade
 
-Entregáveis:
+```txt
+Branch: feat/galanta-ortho-authority-content
+```
 
-- Metadados dinâmicos.
-- Sitemap.
-- Robots.
-- JSON-LD.
-- Tracking provider.
-- Eventos principais.
+- páginas completas;
+- FAQ;
+- materiais;
+- regulatório/segurança;
+- revisão de compliance.
 
-Prompt: `prompts/06-TRACKING-SEO.md`
+## Task 8 — SEO e tracking
 
-## Task 7 — Admin MVP
+```txt
+Branch: feat/galanta-b2b-seo-tracking
+```
 
-Entregáveis:
+- metadata/sitemap/schema;
+- eventos de lead;
+- remover Purchase/Offer;
+- zero PII.
 
-- Login simples.
-- Lista de pedidos mockados ou reais se banco já existir.
-- Detalhe do pedido.
-- Alteração de status.
+## Task 9 — Aceite do MVP
 
-Prompt: `prompts/07-ADMIN.md`
+```txt
+Branch: chore/galanta-b2b-mvp-readiness
+```
 
-## Task 8 — Revisão final MVP
+- auditoria de legado;
+- acessibilidade/responsividade;
+- lint/build/Docker;
+- testes de rotas/fluxos;
+- docs e pendências.
 
-Entregáveis:
+## Tasks futuras condicionais
 
-- Teste mobile.
-- Build.
-- Ajustes de responsivo.
-- Limpeza de dados mockados.
-- Checklist de produção.
+- banco e autenticação real;
+- CRM/notificações;
+- storage privado;
+- rastreabilidade;
+- Pagar.me/pedidos somente após autorização.
 
-## Regras gerais para todas as tasks
+## Regras gerais
 
-- Abrir PR pequeno.
-- Não misturar tasks.
-- Atualizar docs se mudar comportamento.
-- Não inventar dados finais.
-- Não usar Base44.
+- ler docs 00, 01, 16–21 e documento específico;
+- não misturar fases;
+- preservar mocks até substituição validada;
+- não inventar produto/claim;
+- não coletar dados de paciente;
+- atualizar docs quando comportamento mudar;
+- lint e build em todos os PRs;
+- Docker quando runtime/configuração mudar;
+- commits semânticos e PRs pequenos.

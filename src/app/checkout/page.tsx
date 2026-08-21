@@ -1,7 +1,5 @@
-import { CheckoutPageContent } from '@/components/checkout/CheckoutPageContent'
-
-export const metadata = { title: 'Checkout demonstrativo' }
+import { redirect } from 'next/navigation'
 
 export default function CheckoutPage() {
-  return <CheckoutPageContent />
+  redirect('/solicitacao/dados')
 }

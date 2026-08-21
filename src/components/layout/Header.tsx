@@ -6,10 +6,12 @@ import { useEffect, useState } from 'react'
 import { BrandLockup } from '@/components/brand/BrandLockup'
 import { Container } from '@/components/ui/Container'
 import { primaryNavigation } from '@/data/navigation'
+import { useTechnicalRequest } from '@/hooks/useTechnicalRequest'
 
 export function Header() {
   const pathname = usePathname()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const { itemCount, openRequest } = useTechnicalRequest()
 
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
@@ -40,7 +42,10 @@ export function Header() {
           })}
         </nav>
 
-        <Link className="inline-flex min-h-11 items-center justify-center rounded-lg bg-cyan px-3 text-xs font-semibold text-galanta-black hover:bg-aqua sm:px-4" href="/contato"><span className="sm:hidden">Contato</span><span className="hidden sm:inline">Solicitar apresentação</span></Link>
+        <div className="flex items-center gap-2">
+          <button aria-label={`Abrir seleção técnica com ${itemCount} item(ns)`} className="relative inline-flex min-h-11 items-center justify-center rounded-lg border border-mist bg-white px-3 text-xs font-semibold text-slate hover:border-cyan/50 hover:text-cyan" onClick={openRequest} type="button"><span className="hidden sm:inline">Solicitação</span><span aria-hidden="true" className="sm:hidden">Seleção</span>{itemCount > 0 && <span aria-label={`${itemCount} item(ns) selecionado(s)`} className="ml-2 grid min-w-5 place-items-center rounded-full bg-cyan px-1.5 py-0.5 font-technical text-[9px] text-galanta-black">{itemCount}</span>}</button>
+          <Link className="hidden min-h-11 items-center justify-center rounded-lg bg-cyan px-4 text-xs font-semibold text-galanta-black hover:bg-aqua md:inline-flex" href="/contato">Solicitar apresentação</Link>
+        </div>
       </Container>
 
       {isMenuOpen && (
@@ -48,6 +53,7 @@ export function Header() {
           <Container>
             <nav aria-label="Navegação mobile" className="grid py-3 text-sm font-semibold text-slate" id="mobile-navigation">
               {primaryNavigation.map((item) => <Link aria-current={pathname === item.href ? 'page' : undefined} className="rounded-lg px-3 py-3 hover:bg-mist/30 aria-[current=page]:bg-cyan/10 aria-[current=page]:text-cyan" href={item.href} key={item.href} onClick={closeMenu}>{item.label}</Link>)}
+              <Link className="rounded-lg px-3 py-3 hover:bg-mist/30" href="/solicitacao" onClick={closeMenu}>Minha solicitação</Link>
               <Link className="mt-2 rounded-lg border border-cyan/45 px-3 py-3 text-cyan" href="/contato" onClick={closeMenu}>Contato profissional</Link>
             </nav>
           </Container>

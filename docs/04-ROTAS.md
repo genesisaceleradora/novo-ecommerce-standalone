@@ -61,7 +61,7 @@ Futuras:
 
 ## 5. Rotas legadas
 
-Quando os destinos novos estiverem prontos:
+Status: redirecionamentos ativados na Fase 5 após validação dos destinos novos.
 
 ```txt
 /carrinho  → /solicitacao
@@ -69,7 +69,7 @@ Quando os destinos novos estiverem prontos:
 /obrigado  → /solicitacao/confirmacao
 ```
 
-Não remover antes de validar links, tracking, sitemap e persistência.
+Os arquivos de rota permanecem como pontos explícitos de compatibilidade. A remoção definitiva deve aguardar a auditoria de links, tracking e histórico na Fase 9.
 
 ## 6. Regras de URL
 

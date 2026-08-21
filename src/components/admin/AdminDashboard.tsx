@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { AdminTechnicalRequestPreview } from '@/components/admin/AdminTechnicalRequestPreview'
 import { AdminStatusBadge } from '@/components/admin/AdminStatusBadge'
 import { Card } from '@/components/ui/Card'
 import { useMockAdminOrders } from '@/hooks/useMockAdminOrders'
@@ -25,6 +26,7 @@ export function AdminDashboard() {
   return <div>
     <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between"><div><p className="text-xs font-bold uppercase tracking-[0.15em] text-cyan">Visão geral</p><h1 className="mt-2 font-display text-4xl font-semibold text-slate">Pedidos e produção</h1><p className="mt-2 max-w-2xl text-sm leading-6 text-steel">Dados exclusivamente demonstrativos, prontos para serem substituídos pela camada de banco.</p></div><span className="text-xs text-steel">Atualizações persistem apenas neste navegador.</span></div>
     <div className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">{metrics.map((metric) => <Card className="p-5" key={metric.label}><p className="text-xs font-bold uppercase tracking-[0.11em] text-steel">{metric.label}</p><p className="mt-3 font-display text-3xl font-semibold text-slate">{metric.value}</p><p className="mt-2 text-xs text-steel">{metric.detail}</p></Card>)}</div>
+    <AdminTechnicalRequestPreview />
     <section className="mt-8"><div className="flex items-center justify-between"><div><h2 className="font-display text-3xl font-semibold text-slate">Pedidos recentes</h2><p className="mt-1 text-sm text-steel">Listagem mockada para a rotina inicial.</p></div></div>
       <Card className="mt-4 overflow-hidden"><div className="divide-y divide-mist">{orders.map((order) => <Link className="block p-5 transition hover:bg-sterile" href={`/admin/pedidos/${order.id}`} key={order.id}><div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between"><div><div className="flex flex-wrap items-center gap-3"><p className="font-semibold text-slate">{order.number}</p><AdminStatusBadge status={order.status} /></div><p className="mt-2 text-sm text-steel">{order.customer.fullName} · {order.items.length} item(ns) · {formatDate(order.createdAt)}</p></div><div className="sm:text-right"><p className="font-semibold text-slate">{formatPriceInBRL(order.total)}</p><p className="mt-1 text-xs font-semibold text-cyan">Ver detalhe →</p></div></div></Link>)}</div></Card>
     </section>

@@ -199,11 +199,11 @@ Filtros futuros:
 
 ## 11. Migração do legado
 
-Status estrutural: concluída em 20/08/2026. O catálogo público usa um domínio Galanta independente; carrinho, checkout e admin permanecem desacoplados até as fases próprias.
+Status estrutural: catálogo concluído em 20/08/2026 e solicitação técnica integrada em 21/08/2026. O catálogo público e a seleção usam domínios Galanta independentes; o admin permanece desacoplado até a Fase 6.
 
 - categorias de presentes foram removidas do catálogo público e seus slugs redirecionam;
 - personalização afetiva foi substituída por configuração técnica nas páginas públicas de produto;
 - `price` é opcional no domínio Galanta e não está preenchido nos mocks;
 - `variations`, especificações e documentos possuem contratos próprios;
-- carrinho será convertido em seleção para solicitação;
-- dados persistidos no `localStorage` devem usar uma nova versão/chave para não importar itens legados.
+- o carrinho ativo foi convertido em seleção para solicitação técnica;
+- dados persistidos no `localStorage` usam uma nova versão/chave e não importam itens legados.

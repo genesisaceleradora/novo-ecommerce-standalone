@@ -13,6 +13,7 @@ Fase 1: concluída em 20/08/2026
 Fase 2: concluída em 20/08/2026
 Fase 3: concluída em 20/08/2026
 Fase 4: concluída em 20/08/2026
+Fase 5: concluída em 21/08/2026
 Marca master: Galanta Medical — nome final
 Linha inicial: Galanta Ortho — nome final
 Categoria planejada: órteses e imobilizadores 3D
@@ -319,6 +320,8 @@ Categorias planejadas:
 
 ## 10. Fase 5 — Solicitação técnica B2B
 
+Status: concluída em 21/08/2026. O carrinho e o checkout ativos foram substituídos por seleção técnica versionada, formulário profissional com validação client/server e confirmação mockada sem pagamento. As rotas legadas agora redirecionam para o fluxo B2B, e o admin exibe uma prévia da solicitação mantida somente na sessão até sua migração completa na Fase 6.
+
 Branch recomendada:
 
 ```txt
@@ -571,4 +574,4 @@ Cada etapa só está pronta quando:
 
 ## 19. Próxima ação
 
-Iniciar a Fase 5 em PR separado: substituir o fluxo de carrinho/checkout por seleção e solicitação técnica B2B, com persistência própria, validação client/server e confirmação sem pagamento ou dados de pacientes.
+Iniciar a Fase 6 em PR separado: substituir o admin de pedidos por um pipeline mockado de leads técnicos, com indicadores, status e detalhes coerentes com o fluxo B2B.

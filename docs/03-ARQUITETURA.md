@@ -128,7 +128,7 @@ Uma biblioteca de schema pode ser adicionada quando a implementação do fluxo B
 
 ## 11. Compatibilidade durante a migração
 
-Até as novas rotas estarem prontas, carrinho, checkout e admin legados continuam apenas como implementação mockada. Novos módulos devem migrar por etapa e manter build verde. Redirecionamentos entram somente após o destino estar validado.
+As rotas de seleção, dados profissionais e confirmação foram validadas na Fase 5. Carrinho, checkout e obrigado agora redirecionam para seus equivalentes B2B; o domínio legado não é importado pela nova chave versionada. O admin de pedidos permanece isolado até sua migração completa para leads na Fase 6.
 
 ## 12. Integrações futuras
 

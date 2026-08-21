@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
 import { IBM_Plex_Mono, Inter, Sora } from 'next/font/google'
 import { Suspense, type ReactNode } from 'react'
-import { CartDrawer } from '@/components/cart/CartDrawer'
-import { CartProvider } from '@/components/cart/CartProvider'
 import { Footer } from '@/components/layout/Footer'
 import { Header } from '@/components/layout/Header'
 import { Topbar } from '@/components/layout/Topbar'
+import { TechnicalRequestDrawer } from '@/components/technical-request/TechnicalRequestDrawer'
+import { TechnicalRequestProvider } from '@/components/technical-request/TechnicalRequestProvider'
 import { OrganizationSchema } from '@/components/seo/Schemas'
 import { TrackingProvider } from '@/components/TrackingProvider'
 import { createPageMetadata } from '@/lib/seo/metadata'
@@ -48,13 +48,13 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <html className={`${sora.variable} ${inter.variable} ${ibmPlexMono.variable}`} lang="pt-BR">
       <body>
         <OrganizationSchema />
-        <CartProvider>
+        <TechnicalRequestProvider>
           <Topbar />
           <Header />
           <main>{children}</main>
           <Footer />
-          <CartDrawer />
-        </CartProvider>
+          <TechnicalRequestDrawer />
+        </TechnicalRequestProvider>
         <Suspense fallback={null}><TrackingProvider /></Suspense>
       </body>
     </html>

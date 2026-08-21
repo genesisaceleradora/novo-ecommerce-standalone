@@ -1,7 +1,5 @@
-import { ThankYouPageContent } from '@/components/checkout/ThankYouPageContent'
-
-export const metadata = { title: 'Obrigado' }
+import { redirect } from 'next/navigation'
 
 export default function ThankYouPage() {
-  return <ThankYouPageContent />
+  redirect('/solicitacao/confirmacao')
 }

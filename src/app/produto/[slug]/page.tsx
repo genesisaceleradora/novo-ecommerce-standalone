@@ -3,7 +3,6 @@ import { notFound, redirect } from 'next/navigation'
 import { ApprovalStatusBadge, ProductStatusBadge } from '@/components/catalog/CatalogStatusBadge'
 import { CatalogGrid } from '@/components/catalog/CatalogGrid'
 import { ProductGallery } from '@/components/catalog/ProductGallery'
-import { TechnicalConfigurator } from '@/components/catalog/TechnicalConfigurator'
 import { TechnicalDocuments } from '@/components/catalog/TechnicalDocuments'
 import { TechnicalSpecifications } from '@/components/catalog/TechnicalSpecifications'
 import { InstitutionalCta } from '@/components/institutional/InstitutionalCta'
@@ -13,6 +12,7 @@ import { Badge } from '@/components/ui/Badge'
 import { ComplianceNotice } from '@/components/ui/ComplianceNotice'
 import { Container } from '@/components/ui/Container'
 import { SectionTitle } from '@/components/ui/SectionTitle'
+import { ProductRequestConfigurator } from '@/components/technical-request/ProductRequestConfigurator'
 import { catalogProducts, getCatalogCategoryById, getCatalogProductBySlug, getRelatedCatalogProducts, legacyProductAliases, requestTypeLabels } from '@/data/catalog'
 import { createPageMetadata } from '@/lib/seo/metadata'
 
@@ -58,7 +58,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
             <div className="grid gap-2 py-4 sm:grid-cols-[0.8fr_1fr_auto] sm:items-center"><dt className="font-technical text-[10px] font-semibold uppercase tracking-[0.1em] text-steel">Condição comercial</dt><dd className="text-sm font-medium text-slate">Preço e condição sob consulta</dd><dd><ApprovalStatusBadge status="pending" /></dd></div>
           </dl>
 
-          <div className="mt-7"><TechnicalConfigurator productName={product.name} variations={product.variations} /></div>
+          <div className="mt-7"><ProductRequestConfigurator product={product} /></div>
         </div>
       </div>
     </Container>
@@ -92,6 +92,6 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
     {relatedProducts.length > 0 && <section className="border-y border-mist bg-white py-16 md:py-24"><Container><SectionTitle description="Registros relacionados preservam o mesmo nível de transparência e aprovação." eyebrow="Estrutura relacionada" title="Outras áreas do catálogo Galanta Ortho." /><div className="mt-10"><CatalogGrid products={relatedProducts} /></div></Container></section>}
 
-    <InstitutionalCta description="Registre interesse profissional. A seleção técnica completa será conectada ao fluxo B2B na próxima fase." primaryAction={{ href: '/contato', label: 'Falar com a equipe Galanta' }} secondaryAction={{ href: '/produtos', label: 'Voltar ao catálogo' }} title="Avalie a estrutura sem iniciar compra ou pagamento." />
+    <InstitutionalCta description="Revise os itens selecionados e envie seus dados profissionais sem iniciar compra, reserva ou pagamento." primaryAction={{ href: '/solicitacao', label: 'Revisar solicitação técnica' }} secondaryAction={{ href: '/produtos', label: 'Voltar ao catálogo' }} title="Transforme o interesse em uma solicitação profissional." />
   </>
 }

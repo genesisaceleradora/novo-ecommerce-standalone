@@ -129,4 +129,4 @@ Quando uma informação técnica for fornecida:
 
 ## 9. Próxima fase autorizada
 
-As Fases 1 a 4 estão concluídas. A Fase 5 pode começar sem aguardar as pendências técnicas: implementar seleção e solicitação profissional mockadas, sem pagamento, envio real ou dados identificáveis de pacientes.
+As Fases 1 a 5 estão concluídas. A Fase 6 pode começar sem aguardar as pendências técnicas: migrar o admin mockado de pedidos para um pipeline de leads técnicos, sem faturamento, pagamento ou dados reais.

@@ -61,6 +61,8 @@ Branch: feat/galanta-ortho-catalog
 
 ## Task 5 — Solicitação técnica
 
+Status: concluída em 21/08/2026.
+
 ```txt
 Branch: feat/galanta-b2b-technical-request
 ```

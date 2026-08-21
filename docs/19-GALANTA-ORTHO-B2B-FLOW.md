@@ -4,6 +4,13 @@
 
 Transformar a conversão do MVP em uma solicitação profissional qualificada, sem compra, pagamento ou indicação clínica.
 
+```txt
+Fase 5: concluída em 21/08/2026
+Estado: seleção, formulário, API e confirmação mockadas implementadas
+Persistência: seleção em localStorage versionado; confirmação e prévia administrativa apenas na sessão
+Integrações externas: nenhuma
+```
+
 ## 2. Jornada
 
 ```txt
@@ -35,6 +42,8 @@ Durante a migração:
 ```
 
 Redirecionamentos só entram quando as novas rotas estiverem funcionais.
+
+As três rotas legadas foram redirecionadas após a validação do novo fluxo.
 
 ## 4. Seleção técnica
 
@@ -202,3 +211,5 @@ Quando autorizado:
 - tracking não recebe PII;
 - fluxo funciona em mobile e desktop;
 - recarga não importa carrinho B2C legado.
+
+Os critérios acima foram implementados na Fase 5. A exibição administrativa é uma prévia transitória da última solicitação da sessão; o pipeline persistente mockado será implementado na Fase 6.

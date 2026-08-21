@@ -34,6 +34,7 @@ export const footerNavigation: readonly NavigationGroup[] = [
       { href: '/clinicas-e-hospitais', label: 'Clínicas e hospitais' },
       { href: '/materiais-tecnicos', label: 'Materiais técnicos' },
       { href: '/regulatorio-e-seguranca', label: 'Regulatório e segurança' },
+      { href: '/solicitacao', label: 'Solicitação técnica' },
     ],
   },
   {

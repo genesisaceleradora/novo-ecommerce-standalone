@@ -12,6 +12,7 @@ Fase 0: concluída em 20/08/2026
 Fase 1: concluída em 20/08/2026
 Fase 2: concluída em 20/08/2026
 Fase 3: concluída em 20/08/2026
+Fase 4: concluída em 20/08/2026
 Marca master: Galanta Medical — nome final
 Linha inicial: Galanta Ortho — nome final
 Categoria planejada: órteses e imobilizadores 3D
@@ -274,6 +275,8 @@ Rotas planejadas:
 Home e navegação refletem o novo posicionamento sem depender do catálogo B2C.
 
 ## 9. Fase 4 — Catálogo Galanta Ortho
+
+Status: concluída em 20/08/2026. O domínio público de catálogo foi migrado para tipos e mocks Galanta independentes, com Standard + Personal, variações demonstrativas, documentos sem URL pública, aliases do legado e avisos explícitos. Carrinho e checkout permanecem desacoplados para a Fase 5.
 
 Branch recomendada:
 
@@ -568,4 +571,4 @@ Cada etapa só está pronta quando:
 
 ## 19. Próxima ação
 
-Iniciar a Fase 4 em PR separado: modelar e implementar o catálogo Galanta Ortho com dados seguros e explícitos, sem preço, oferta comercial ou afirmação regulatória não aprovada.
+Iniciar a Fase 5 em PR separado: substituir o fluxo de carrinho/checkout por seleção e solicitação técnica B2B, com persistência própria, validação client/server e confirmação sem pagamento ou dados de pacientes.

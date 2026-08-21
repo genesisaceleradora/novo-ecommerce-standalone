@@ -48,6 +48,8 @@ Branch: feat/galanta-medical-site-foundation
 
 ## Task 4 — Catálogo Galanta Ortho
 
+Status: concluída em 20/08/2026.
+
 ```txt
 Branch: feat/galanta-ortho-catalog
 ```

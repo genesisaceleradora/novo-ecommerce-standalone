@@ -74,7 +74,7 @@ type OrthoProduct = {
 }
 ```
 
-Os tipos acima orientam a implementação futura; não exigem migração imediata do código nesta fase documental.
+Os tipos acima foram implementados em `src/types/catalog.ts` na Fase 4. Informações técnicas pendentes continuam representadas por conteúdo tipado com status explícito.
 
 ## 4. Variações
 
@@ -199,9 +199,11 @@ Filtros futuros:
 
 ## 11. Migração do legado
 
-- categorias de presentes serão removidas;
-- personalização afetiva será substituída por configuração técnica;
-- `price` deve se tornar opcional antes da migração do catálogo;
-- `personalization` deve ser separado de `variations` e `technicalRequirements`;
+Status estrutural: concluída em 20/08/2026. O catálogo público usa um domínio Galanta independente; carrinho, checkout e admin permanecem desacoplados até as fases próprias.
+
+- categorias de presentes foram removidas do catálogo público e seus slugs redirecionam;
+- personalização afetiva foi substituída por configuração técnica nas páginas públicas de produto;
+- `price` é opcional no domínio Galanta e não está preenchido nos mocks;
+- `variations`, especificações e documentos possuem contratos próprios;
 - carrinho será convertido em seleção para solicitação;
 - dados persistidos no `localStorage` devem usar uma nova versão/chave para não importar itens legados.

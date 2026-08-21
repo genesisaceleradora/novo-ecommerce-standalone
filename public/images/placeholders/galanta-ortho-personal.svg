@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" role="img" aria-labelledby="title description">
+  <title id="title">Placeholder visual Linha Personal</title>
+  <desc id="description">Composição geométrica abstrata sem representação de produto clínico.</desc>
+  <rect width="1200" height="900" fill="#050A0D"/>
+  <g stroke="#D8E1E8" stroke-opacity=".08">
+    <path d="M0 100h1200M0 200h1200M0 300h1200M0 400h1200M0 500h1200M0 600h1200M0 700h1200M0 800h1200"/>
+    <path d="M100 0v900M200 0v900M300 0v900M400 0v900M500 0v900M600 0v900M700 0v900M800 0v900M900 0v900M1000 0v900M1100 0v900"/>
+  </g>
+  <path d="M352 604C352 330 442 196 604 196c164 0 244 136 244 408" fill="none" stroke="#2EE6F0" stroke-width="3" stroke-opacity=".75"/>
+  <path d="M430 632c0-218 60-330 174-330 115 0 166 112 166 330" fill="none" stroke="#00B8C7" stroke-width="2" stroke-opacity=".48"/>
+  <circle cx="604" cy="448" r="210" fill="none" stroke="#D8E1E8" stroke-opacity=".16" stroke-dasharray="8 16"/>
+  <text x="72" y="776" fill="#D8E1E8" fill-opacity=".72" font-family="monospace" font-size="23" letter-spacing="4">LINHA PERSONAL · VISUAL PENDENTE</text>
+  <text x="72" y="818" fill="#7A8A99" font-family="sans-serif" font-size="20">Composição abstrata — não representa produto, aplicação ou evidência.</text>
+</svg>

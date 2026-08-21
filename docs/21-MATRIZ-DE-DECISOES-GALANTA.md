@@ -129,4 +129,4 @@ Quando uma informação técnica for fornecida:
 
 ## 9. Próxima fase autorizada
 
-A Fase 1 pode começar sem aguardar as pendências técnicas: criar os documentos de marca, compliance, taxonomia e fluxo B2B e normalizar a documentação legada para a direção Galanta Medical/Galanta Ortho.
+As Fases 1 a 4 estão concluídas. A Fase 5 pode começar sem aguardar as pendências técnicas: implementar seleção e solicitação profissional mockadas, sem pagamento, envio real ou dados identificáveis de pacientes.

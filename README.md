@@ -5,14 +5,14 @@ Base profissional mobile first e sem Base44 para Galanta Medical / Galanta Ortho
 ## Stack e escopo atual
 
 - Next.js App Router, TypeScript, Tailwind CSS e ESLint.
-- O design system Clinical Tech Industrial e a estrutura institucional da Galanta Medical já estão aplicados; catálogo e fluxos funcionais seguem organizados em PRs separados.
-- Catálogo, personalização, carrinho, checkout e admin legados funcionam somente com dados mockados e não representam a operação Galanta final.
+- O design system Clinical Tech Industrial, a estrutura institucional e o catálogo técnico configurável da Galanta Medical já estão aplicados.
+- O catálogo Galanta usa registros estruturais Standard + Personal sem preço, oferta ou especificação inventada; seleção, carrinho, checkout e admin ainda aguardam migração B2B.
 - SEO, sitemap, robots e tracking são centralizados.
 - Pagar.me, Supabase/Postgres e storage privado possuem apenas fundações arquiteturais; não há cobrança, banco ou upload real.
 
 ## Direção estratégica
 
-A evolução para Galanta Medical / Galanta Ortho está organizada no [Plano Master](docs/20-PLANO-MASTER-GALANTA-MEDICAL.md). Os nomes são finais, as pendências não bloqueantes estão na [matriz de decisões](docs/21-MATRIZ-DE-DECISOES-GALANTA.md) e a fundação institucional está pronta para receber o catálogo profissional da próxima fase.
+A evolução para Galanta Medical / Galanta Ortho está organizada no [Plano Master](docs/20-PLANO-MASTER-GALANTA-MEDICAL.md). Os nomes são finais, as pendências não bloqueantes estão na [matriz de decisões](docs/21-MATRIZ-DE-DECISOES-GALANTA.md) e o catálogo estrutural está pronto para receber o fluxo de solicitação técnica da próxima fase.
 
 Documentos centrais:
 
@@ -63,19 +63,18 @@ Copie `.env.example` para `.env.local`. Não envie `.env.local`, chaves ou token
 | Storage | `STORAGE_BUCKET_UPLOADS` | Reservada para bucket privado futuro. |
 | Admin | `ADMIN_PASSWORD`, `ADMIN_EMAIL` | A senha protege o admin mockado no servidor. Em desenvolvimento, se `ADMIN_PASSWORD` estiver vazia, use `admin-local-dev-only` somente para testar localmente. Em produção, defina uma senha única e substitua esta camada por autenticação real antes do lançamento. |
 
-## Fluxo atual da implementação legada
+## Fluxo atual do MVP
 
-A navegação pública atual apresenta a Galanta Medical e a linha Galanta Ortho por meio das rotas institucionais `/galanta-ortho`, `/produtos`, `/linha-standard`, `/linha-personal`, `/como-funciona`, `/amostras-tecnicas`, `/profissionais`, `/clinicas-e-hospitais`, `/materiais-tecnicos` e `/regulatorio-e-seguranca`. O conteúdo é estrutural, sem catálogo final, preço, oferta ou claim clínico não aprovado.
+A navegação pública apresenta a Galanta Medical, a linha Galanta Ortho e o catálogo técnico por meio de `/produtos`, `/categoria/[slug]` e `/produto/[slug]`. Os registros Standard e Personal exercitam tipos, variações, especificações, documentos e status de aprovação sem representar catálogo final, preço, oferta ou claim clínico aprovado.
 
-As rotas demonstrativas anteriores permanecem acessíveis diretamente apenas para preservar a continuidade técnica enquanto as próximas fases substituem o domínio B2C:
+O estado atual é:
 
-1. O visitante navega por home, categorias e produtos demonstrativos.
-2. Produtos configurados exibem personalização no cliente; arquivos são apenas metadados locais e não são enviados.
-3. O carrinho persiste no `localStorage`, pode ser editado pela gaveta lateral ou em `/carrinho`.
-4. O checkout valida dados obrigatórios, cria uma confirmação mockada server-side e redireciona para `/obrigado`.
-5. O admin em `/admin` usa sessão mockada, lista pedidos demonstrativos e mantém mudanças de status apenas no navegador.
+1. O visitante consulta categorias e produtos Galanta com pendências explícitas.
+2. Os controles de tamanho, lado ou configuração usam placeholders e mantêm estado somente durante a visualização da página.
+3. Slugs B2C antigos redirecionam para os registros equivalentes do catálogo estrutural.
+4. Carrinho, checkout e admin antigos permanecem acessíveis diretamente somente como fundações técnicas mockadas e não recebem itens do catálogo Galanta.
 
-Esse fluxo será substituído gradualmente por catálogo profissional, seleção técnica, formulário B2B, confirmação sem pagamento e admin de leads. Não use a implementação atual para pedidos ou dados reais.
+A próxima fase substituirá carrinho e checkout por seleção técnica, formulário profissional e confirmação sem pagamento. Não use a implementação atual para pedidos, pacientes ou dados reais.
 
 ## Docker e deploy em servidor próprio
 
@@ -103,14 +102,14 @@ Para um deploy próprio:
 2. Defina as variáveis do grupo **Site** no ambiente do container. Em produção, `NEXT_PUBLIC_SITE_URL` deve usar o domínio final HTTPS, sem barra ao final.
 3. Defina `ADMIN_PASSWORD` como secret do ambiente. As chaves futuras de Pagar.me, Supabase e Storage também devem permanecer somente no servidor, sem prefixo `NEXT_PUBLIC_`.
 4. Execute o container com a porta interna `3000` publicada pelo proxy reverso HTTPS do servidor.
-5. Valide `/`, `/categoria/personalizados`, `/produto/produto-personalizado-exemplo`, `/checkout`, `/admin`, `/robots.txt` e `/sitemap.xml`.
+5. Valide `/`, `/produtos`, `/categoria/linha-standard`, `/produto/galanta-ortho-standard-desenvolvimento`, `/checkout`, `/admin`, `/robots.txt` e `/sitemap.xml`.
 6. Só permita indexação quando domínio, marca, catálogo, páginas legais e conteúdo real estiverem prontos. Sem URL de produção configurada, `robots.txt` bloqueia rastreadores deliberadamente.
 
 > Variáveis iniciadas por `NEXT_PUBLIC_` usadas em código de navegador são incorporadas durante `npm run build`. Para alterá-las em uma imagem de produção, faça o build da imagem com os valores públicos aprovados no ambiente de build ou gere uma nova imagem; nunca passe segredos como argumentos de build.
 
 ## Limitações e próximos passos
 
-Este projeto não deve receber solicitações ou pedidos reais ainda. Faltam catálogo Galanta aprovado, fluxo B2B, produto e materiais técnicos aprovados, persistência, autenticação real, conteúdo jurídico, operação comercial e gates regulatórios. Pagar.me e storage continuam inativos. O Docker entrega apenas a aplicação; domínio HTTPS, proxy, secrets, monitoramento e backups ainda precisam de configuração. Consulte [docs/14-PENDENCIAS.md](docs/14-PENDENCIAS.md).
+Este projeto não deve receber solicitações ou pedidos reais ainda. Faltam catálogo Galanta final aprovado, fluxo B2B, produto e materiais técnicos aprovados, persistência, autenticação real, conteúdo jurídico, operação comercial e gates regulatórios. Pagar.me e storage continuam inativos. O Docker entrega apenas a aplicação; domínio HTTPS, proxy, secrets, monitoramento e backups ainda precisam de configuração. Consulte [docs/14-PENDENCIAS.md](docs/14-PENDENCIAS.md).
 
 ## Como usar com o Codex
 
